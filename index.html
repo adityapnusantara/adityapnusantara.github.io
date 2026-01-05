@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Pratama Nusantara | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="hero" data-animate="fade-down">
+      <div class="name">Aditya Pratama Nusantara</div>
+      <div class="contact">
+        <span>085649967827</span>
+        <span>|</span>
+        <span>adityaadit677@gmail.com</span>
+        <span>|</span>
+        <a href="https://linkedin.com/in/adityapn" target="_blank" rel="noreferrer">linkedin.com/in/adityapn</a>
+      </div>
+    </header>
+
+    <section aria-labelledby="experience">
+      <div id="experience" class="section-title" data-animate="fade-left">Experience</div>
+
+      <article class="experience-item" data-animate="lift">
+        <div class="role">PLT AI &amp; ML Engineering Specialist</div>
+        <div class="meta">LinkAja, DKI Jakarta (Hybrid) | Jan 2025 – Current</div>
+        <ul class="bullets">
+          <li>Responsible for leading LinkAja's AI ML team.</li>
+          <li>Designed and implemented automated denomination (denom) update system for prepaid products, including snapshotting, validation, approval, and rollback mechanisms to ensure pricing accuracy and compliance.</li>
+          <li>Ongoing research on the document validation process for cooperation agreements with configuration in the core system using Large Language Model (OpenAI).</li>
+          <li>Maintain the deployment of e-KYC services such as OCR, face biometrics, and ID card analysis.</li>
+          <li>Optimizing AI/ML infrastructure costs by migrating the Cloud Run scheduler to a GKE CronJob.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item" data-animate="lift">
+        <div class="role">Senior AI &amp; ML Engineering Accosiate</div>
+        <div class="meta">LinkAja, DKI Jakarta (Hybrid) | Dec 2023 – Dec 2024</div>
+        <ul class="bullets">
+          <li>Deploy embedding and reranking in-house model using Text Embedding Inference from Hugging Face.</li>
+          <li>Set up and integrate the existing LLM project with Langfuse as a tracing and prompt management tool.</li>
+          <li>Researching developing, and deploying service on Google Kubernetes Engine including Embedding Model, Reranking Model and LangChain Agent (using OpenAI) for several use case chatbot:
+            <ul class="bullets">
+              <li>Company Revenue Agent: Users can ask about LinkAja's revenue, expenses, projections, and EBITDA, and request analysis from agent.</li>
+              <li>Disbursement Agent: Agent can answer questions about disbursements made through the LinkAja eWallet by partner companies.</li>
+              <li>Confluence Agent: Agents can answer questions based on the documentation in Confluence.</li>
+            </ul>
+          </li>
+          <li>Deployment and Maintenance of Research AI Scientist or Fraud Management Team Services:
+            <ul class="bullets">
+              <li>Leveraged ArgoCD and GKE for orchestration.</li>
+              <li>Utilized Google Storage for model storage.</li>
+              <li>Implemented Cloud Functions and Cloud Scheduler for service scheduling.</li>
+            </ul>
+          </li>
+          <li>Develop and deploy a churn prediction model to support the business in determining promotions for customers.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item" data-animate="lift">
+        <div class="role">Lead AI Engineer</div>
+        <div class="meta">PT eBesak Teknologi, Jakarta Selatan (On-site) | Nov 2021 – Nov 2023</div>
+        <ul class="bullets">
+          <li>Developing a LLM-based application using semantic search as the knowledge retrieval method, accomplished by fine-tuning the XLM-RoBERTa model for generating embedding vectors. The Milvus toolkit serves as the storage and query vector platform. The data integrated into Milvus includes diverse sources such as news, ebooks, journals, reports, and health-related Q&amp;A. Integration between LLM and Milvus for semantic search is facilitated through the use of Langchain.</li>
+          <li>Developing an Image Search Engine using OpenAI's Open-Source CLIP Model for Matching Input Captions or Images, Stored in Milvus to Identify Similar Images. This engine is designed for implementation in chat applications.</li>
+          <li>Developing and Deploying a pipeline enrich data using Ray, encompassing several engines including NER, Sentiment Analysis, Emotion Analysis, Actor Analysis, Sentiment Reason, Actor Analysis, Statement Extraction, Summarization, 5W1H Analysis, Fake News and Target Dependent Analysis. This deployment is designed to process diverse data sources like news, social media, and podcasts.</li>
+          <li>Fine-tuning a clustering model using Sentence Transformers with the pre-trained BERT model. This model is employed for clustering news articles, assisting the analysis team in generating daily reports.</li>
+          <li>Updating all profiling engines to process social media account data using a blend of rule-based and machine learning approaches. The outcomes are intended for demographic and psychographic analysis purposes.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item" data-animate="lift">
+        <div class="role">AI Engineer</div>
+        <div class="meta">PT eBdesk Teknologi, Jakarta Selatan | Nov 2020 – Nov 2021</div>
+        <ul class="bullets">
+          <li>Maintaining and managing all engines for text processing in a production environment, and establishing an MLOps workflow, including:
+            <ul class="bullets">
+              <li>Development: Creating training data for annotation using tools like LabelStudio.</li>
+              <li>Deployment: Deploying using a Ray cluster or utilizing FastAPI on Kubernetes.</li>
+              <li>Monitoring: Monitoring training results using MLFlow and tracking errors using Sentry for effective error management.</li>
+              <li>Maintenance: Leveraging Git as a version control system, incorporating Git Flow principles. This approach facilitates organized code management, version tracking, and streamlined collaboration for ongoing maintenance and development tasks.</li>
+            </ul>
+          </li>
+          <li>Develop a translation model using MarianMT, trained on the Opus dataset. This model is specifically designed to translate news articles from Russian, French, Arabic, Chinese, and Spanish to English and Indonesian languages.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section aria-labelledby="education">
+      <div id="education" class="section-title" data-animate="fade-left">Education</div>
+      <div class="education" data-animate="slide-in">
+        <div class="edu-row">
+          <span>Master's degree in Mathematics from Institut Teknologi Sepuluh Nopember.</span>
+          <span>Jan 2018 - Aug 2019</span>
+        </div>
+        <div class="edu-row">
+          <span>Bachelor's degree in Mathematics from Universitas Airlangga.</span>
+          <span>Jul 2013 - Sep 2017</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills">
+      <div id="skills" class="section-title" data-animate="fade-left">Key Skills</div>
+      <div class="skills" data-animate="lift">
+        Python, Natural Language Processing, Langchain, Machine Learning, Deep Learning, Pytorch, RestAPI, Semantic Search, Transformers, Docker &amp; Kubernetes, Elasticsearch, MongoDB, Milvus, SQL, Ubuntu, Airflow, MLFlow, LabelStudio, Spacy, Google Cloud Platform, ArgoCD, Kafka, Langfuse, Prompt Engineering.
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
