@@ -602,6 +602,7 @@ main {
   font-weight: 800;
   letter-spacing: 0.04em;
   border: 1px solid var(--stack-border);
+  font-size: 14px;
 }
 
 /* Animations */
