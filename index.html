@@ -1,116 +1,447 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aditya Pratama Nusantara | Portfolio</title>
+  <title>Aditya Pratama Nusantara | AI & ML Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-wZf3PHBLV+RZLsS1jHzDoYgG/TLVmV/TLw6FNJykS3waCW2lf8+ifdsiOcEuC1Vt7S1YjL8uH+y3tZJMeR7xag==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="page">
-    <header class="hero" data-animate="fade-down">
-      <div class="name">Aditya Pratama Nusantara</div>
-      <div class="contact">
-        <span>085649967827</span>
-        <span>|</span>
-        <span>adityaadit677@gmail.com</span>
-        <span>|</span>
-        <a href="https://linkedin.com/in/adityapn" target="_blank" rel="noreferrer">linkedin.com/in/adityapn</a>
+  <nav class="top-nav" id="topNav">
+    <div class="nav-inner">
+      <a href="#home" class="brand">Aditya PN</a>
+      <div class="nav-menu" id="navMenu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#highlights" class="nav-link">Highlights</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
-    </header>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a class="pill-btn" href="#contact">Let's talk</a>
+        <button class="icon-btn nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-    <section aria-labelledby="experience">
-      <div id="experience" class="section-title" data-animate="fade-left">Experience</div>
-
-      <article class="experience-item" data-animate="lift">
-        <div class="role">PLT AI &amp; ML Engineering Specialist</div>
-        <div class="meta">LinkAja, DKI Jakarta (Hybrid) | Jan 2025 – Current</div>
-        <ul class="bullets">
-          <li>Responsible for leading LinkAja's AI ML team.</li>
-          <li>Designed and implemented automated denomination (denom) update system for prepaid products, including snapshotting, validation, approval, and rollback mechanisms to ensure pricing accuracy and compliance.</li>
-          <li>Ongoing research on the document validation process for cooperation agreements with configuration in the core system using Large Language Model (OpenAI).</li>
-          <li>Maintain the deployment of e-KYC services such as OCR, face biometrics, and ID card analysis.</li>
-          <li>Optimizing AI/ML infrastructure costs by migrating the Cloud Run scheduler to a GKE CronJob.</li>
-        </ul>
-      </article>
-
-      <article class="experience-item" data-animate="lift">
-        <div class="role">Senior AI &amp; ML Engineering Accosiate</div>
-        <div class="meta">LinkAja, DKI Jakarta (Hybrid) | Dec 2023 – Dec 2024</div>
-        <ul class="bullets">
-          <li>Deploy embedding and reranking in-house model using Text Embedding Inference from Hugging Face.</li>
-          <li>Set up and integrate the existing LLM project with Langfuse as a tracing and prompt management tool.</li>
-          <li>Researching developing, and deploying service on Google Kubernetes Engine including Embedding Model, Reranking Model and LangChain Agent (using OpenAI) for several use case chatbot:
-            <ul class="bullets">
-              <li>Company Revenue Agent: Users can ask about LinkAja's revenue, expenses, projections, and EBITDA, and request analysis from agent.</li>
-              <li>Disbursement Agent: Agent can answer questions about disbursements made through the LinkAja eWallet by partner companies.</li>
-              <li>Confluence Agent: Agents can answer questions based on the documentation in Confluence.</li>
-            </ul>
-          </li>
-          <li>Deployment and Maintenance of Research AI Scientist or Fraud Management Team Services:
-            <ul class="bullets">
-              <li>Leveraged ArgoCD and GKE for orchestration.</li>
-              <li>Utilized Google Storage for model storage.</li>
-              <li>Implemented Cloud Functions and Cloud Scheduler for service scheduling.</li>
-            </ul>
-          </li>
-          <li>Develop and deploy a churn prediction model to support the business in determining promotions for customers.</li>
-        </ul>
-      </article>
-
-      <article class="experience-item" data-animate="lift">
-        <div class="role">Lead AI Engineer</div>
-        <div class="meta">PT eBesak Teknologi, Jakarta Selatan (On-site) | Nov 2021 – Nov 2023</div>
-        <ul class="bullets">
-          <li>Developing a LLM-based application using semantic search as the knowledge retrieval method, accomplished by fine-tuning the XLM-RoBERTa model for generating embedding vectors. The Milvus toolkit serves as the storage and query vector platform. The data integrated into Milvus includes diverse sources such as news, ebooks, journals, reports, and health-related Q&amp;A. Integration between LLM and Milvus for semantic search is facilitated through the use of Langchain.</li>
-          <li>Developing an Image Search Engine using OpenAI's Open-Source CLIP Model for Matching Input Captions or Images, Stored in Milvus to Identify Similar Images. This engine is designed for implementation in chat applications.</li>
-          <li>Developing and Deploying a pipeline enrich data using Ray, encompassing several engines including NER, Sentiment Analysis, Emotion Analysis, Actor Analysis, Sentiment Reason, Actor Analysis, Statement Extraction, Summarization, 5W1H Analysis, Fake News and Target Dependent Analysis. This deployment is designed to process diverse data sources like news, social media, and podcasts.</li>
-          <li>Fine-tuning a clustering model using Sentence Transformers with the pre-trained BERT model. This model is employed for clustering news articles, assisting the analysis team in generating daily reports.</li>
-          <li>Updating all profiling engines to process social media account data using a blend of rule-based and machine learning approaches. The outcomes are intended for demographic and psychographic analysis purposes.</li>
-        </ul>
-      </article>
-
-      <article class="experience-item" data-animate="lift">
-        <div class="role">AI Engineer</div>
-        <div class="meta">PT eBdesk Teknologi, Jakarta Selatan | Nov 2020 – Nov 2021</div>
-        <ul class="bullets">
-          <li>Maintaining and managing all engines for text processing in a production environment, and establishing an MLOps workflow, including:
-            <ul class="bullets">
-              <li>Development: Creating training data for annotation using tools like LabelStudio.</li>
-              <li>Deployment: Deploying using a Ray cluster or utilizing FastAPI on Kubernetes.</li>
-              <li>Monitoring: Monitoring training results using MLFlow and tracking errors using Sentry for effective error management.</li>
-              <li>Maintenance: Leveraging Git as a version control system, incorporating Git Flow principles. This approach facilitates organized code management, version tracking, and streamlined collaboration for ongoing maintenance and development tasks.</li>
-            </ul>
-          </li>
-          <li>Develop a translation model using MarianMT, trained on the Opus dataset. This model is specifically designed to translate news articles from Russian, French, Arabic, Chinese, and Spanish to English and Indonesian languages.</li>
-        </ul>
-      </article>
-    </section>
-
-    <section aria-labelledby="education">
-      <div id="education" class="section-title" data-animate="fade-left">Education</div>
-      <div class="education" data-animate="slide-in">
-        <div class="edu-row">
-          <span>Master's degree in Mathematics from Institut Teknologi Sepuluh Nopember.</span>
-          <span>Jan 2018 - Aug 2019</span>
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-graphic"></div>
+      <div class="hero-inner">
+        <div class="hero-media" data-animate="lift">
+          <div class="avatar">
+            <span>APN</span>
+          </div>
+          <div class="location-badge">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Jakarta, Indonesia</span>
+          </div>
         </div>
-        <div class="edu-row">
-          <span>Bachelor's degree in Mathematics from Universitas Airlangga.</span>
-          <span>Jul 2013 - Sep 2017</span>
+        <div class="hero-copy">
+          <p class="eyebrow" data-animate="fade-left">AI & ML Engineering Specialist</p>
+          <h1 data-animate="fade-left">Aditya Pratama Nusantara</h1>
+          <p class="lede" data-animate="fade-left">
+            Building and leading AI/ML systems for fintech, fraud detection, and large-scale deployments. Focused on reliable production ML, observability, and cost-efficient infrastructure.
+          </p>
+          <div class="hero-actions" data-animate="fade-left">
+            <a class="pill-btn primary" href="#contact">Get in touch</a>
+            <a class="pill-btn ghost" href="https://linkedin.com/in/adityapn" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-linkedin"></i>
+              LinkedIn
+            </a>
+          </div>
+          <div class="social" data-animate="fade-left">
+            <a href="mailto:adityaadit677@gmail.com" aria-label="Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="https://linkedin.com/in/adityapn" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section aria-labelledby="skills">
-      <div id="skills" class="section-title" data-animate="fade-left">Key Skills</div>
-      <div class="skills" data-animate="lift">
-        Python, Natural Language Processing, Langchain, Machine Learning, Deep Learning, Pytorch, RestAPI, Semantic Search, Transformers, Docker &amp; Kubernetes, Elasticsearch, MongoDB, Milvus, SQL, Ubuntu, Airflow, MLFlow, LabelStudio, Spacy, Google Cloud Platform, ArgoCD, Kafka, Langfuse, Prompt Engineering.
+    <section id="about" class="section">
+      <div class="section-heading" data-animate="fade-left">
+        <p class="eyebrow">About</p>
+        <h2>Who I Am</h2>
+        <p class="muted">
+          AI/ML engineer with a mathematics background, experienced in leading squads, deploying production services, and shaping observability and governance for ML-driven systems.
+        </p>
+      </div>
+      <div class="grid two" data-animate="lift">
+        <div class="card">
+          <h3>Mission</h3>
+          <p>
+            Deliver dependable ML features—from OCR to LLM agents—while keeping latency, reliability, and costs in check. I prioritize measurable impact and strong operational hygiene.
+          </p>
+          <div class="chips">
+            <span class="chip">AI/ML platforms</span>
+            <span class="chip">Fintech</span>
+            <span class="chip">Observability</span>
+          </div>
+        </div>
+        <div class="card highlights">
+          <div class="stat">
+            <span class="stat-number">7+ yrs</span>
+            <span class="stat-label">Engineering experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">3 squads</span>
+            <span class="stat-label">Led across AI/ML & fraud</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">GKE</span>
+            <span class="stat-label">Cost down via CronJobs & autoscaling</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">LLM</span>
+            <span class="stat-label">Document validation & agentic flows</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="section-heading" data-animate="fade-left">
+        <p class="eyebrow">Experience</p>
+        <h2>Roles & Impact</h2>
+      </div>
+      <div class="stack">
+        <article class="card" data-animate="lift">
+          <header>
+            <div>
+              <p class="eyebrow">Jan 2025 – Present · Hybrid</p>
+              <h3>PLT AI & ML Engineering Specialist — LinkAja</h3>
+            </div>
+            <span class="pill subtle">Leadership</span>
+          </header>
+          <ul class="bullets">
+            <li>Lead the AI/ML squad, owning delivery and production stability.</li>
+            <li>Automated denom updates with validation, approvals, and rollback paths to protect pricing accuracy.</li>
+            <li>Researching document validation flows using LLMs integrated with the core system.</li>
+            <li>Maintain e-KYC stack (OCR, biometrics, ID analysis) and optimize infra costs via GKE CronJobs.</li>
+          </ul>
+        </article>
+
+        <article class="card" data-animate="lift">
+          <header>
+            <div>
+              <p class="eyebrow">Dec 2023 – Dec 2024 · Hybrid</p>
+              <h3>Senior AI & ML Engineering Associate — LinkAja</h3>
+            </div>
+            <span class="pill subtle">AI/ML</span>
+          </header>
+          <ul class="bullets">
+            <li>Deployed in-house embedding and reranking models with Hugging Face TEI.</li>
+            <li>Integrated Langfuse for tracing and prompt governance across LLM projects.</li>
+            <li>Built GKE-hosted agents (revenue, disbursement, Confluence) using OpenAI + LangChain.</li>
+            <li>Ran fraud/AI scientist services via ArgoCD + GKE; used GCS for model storage and schedulers.</li>
+            <li>Shipped churn prediction to guide promotion targeting.</li>
+          </ul>
+        </article>
+
+        <article class="card" data-animate="lift">
+          <header>
+            <div>
+              <p class="eyebrow">Nov 2021 – Nov 2023 · On-site</p>
+              <h3>Lead AI Engineer — PT eBesak Teknologi</h3>
+            </div>
+            <span class="pill subtle">NLP</span>
+          </header>
+          <ul class="bullets">
+            <li>Built semantic search with XLM-RoBERTa embeddings + Milvus across multi-format corpora.</li>
+            <li>Created CLIP-powered image search for caption/image matching within chat experiences.</li>
+            <li>Designed Ray-based enrichment pipelines (NER, sentiment, summarization, fake news, etc.).</li>
+            <li>Fine-tuned BERT clustering for news groupings, aiding daily reporting.</li>
+          </ul>
+        </article>
+
+        <article class="card" data-animate="lift">
+          <header>
+            <div>
+              <p class="eyebrow">Nov 2020 – Nov 2021 · On-site</p>
+              <h3>AI Engineer — PT eBdesk Teknologi</h3>
+            </div>
+            <span class="pill subtle">Delivery</span>
+          </header>
+          <ul class="bullets">
+            <li>Owned text processing engines in production with full MLOps workflow.</li>
+            <li>Built translation with MarianMT for RU/FR/AR/ZH/ES to EN/ID news streams.</li>
+            <li>Set up LabelStudio, MLFlow, Ray/FastAPI on Kubernetes, and Sentry monitoring.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section tech-stack">
+      <div class="section-heading center" data-animate="fade-left">
+        <p class="eyebrow">Tech Stack</p>
+        <h2>Tech Stack</h2>
+        <p class="stack-subtitle">Technical expertise spanning backend systems, fintech solutions, and fraud detection technologies.</p>
+      </div>
+      <div class="stack-grid">
+        <article class="stack-card" data-animate="lift">
+          <h3>Languages</h3>
+          <div class="stack-icons">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" alt="Golang">
+              <span>Golang</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
+              <span>Python</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" alt="Dart">
+              <span>Dart</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">SQL</span>
+              <span>SQL</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="stack-card" data-animate="lift">
+          <h3>AI / ML</h3>
+          <div class="stack-icons">
+            <div class="stack-icon">
+              <span class="badge">NLP</span>
+              <span>Natural Language Processing</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">DL</span>
+              <span>Deep Learning</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">LLM</span>
+              <span>Transformers</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+              <span>PyTorch</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">LC</span>
+              <span>LangChain</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">LG</span>
+              <span>LangGraph</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="stack-card" data-animate="lift">
+          <h3>Databases</h3>
+          <div class="stack-icons">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+              <span>PostgreSQL</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" alt="Redis">
+              <span>Redis</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+              <span>MongoDB</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">MV</span>
+              <span>Milvus</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">ES</span>
+              <span>Elasticsearch</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="stack-card" data-animate="lift">
+          <h3>Cloud & Infrastructure</h3>
+          <div class="stack-icons">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" alt="Docker">
+              <span>Docker</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes">
+              <span>Kubernetes</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grafana/grafana-original.svg" alt="Grafana">
+              <span>Grafana</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud">
+              <span>Google Cloud</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">UB</span>
+              <span>Ubuntu</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="stack-card" data-animate="lift">
+          <h3>Backend & Services</h3>
+          <div class="stack-icons">
+            <div class="stack-icon">
+              <i class="fa-solid fa-microchip"></i>
+              <span>Microservices</span>
+            </div>
+            <div class="stack-icon">
+              <i class="fa-solid fa-wifi"></i>
+              <span>REST APIs</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg" alt="Kafka">
+              <span>Kafka</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">SS</span>
+              <span>Semantic Search</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">PE</span>
+              <span>Prompt Engineering</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="stack-card" data-animate="lift">
+          <h3>MLOps & Tools</h3>
+          <div class="stack-icons">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git">
+              <span>Git</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apacheairflow/apacheairflow-original.svg" alt="Airflow">
+              <span>Airflow</span>
+            </div>
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="ArgoCD" style="opacity:0">
+              <span class="badge">ACD</span>
+              <span>ArgoCD</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">MLF</span>
+              <span>MLFlow</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">LF</span>
+              <span>Langfuse</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">LS</span>
+              <span>LabelStudio</span>
+            </div>
+            <div class="stack-icon">
+              <span class="badge">SP</span>
+              <span>Spacy</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="highlights" class="section">
+      <div class="section-heading" data-animate="fade-left">
+        <p class="eyebrow">Highlights</p>
+        <h2>Selected work</h2>
+      </div>
+      <div class="grid two">
+        <article class="card" data-animate="lift">
+          <div class="pill subtle">Fintech</div>
+          <h3>Automated denom lifecycle</h3>
+          <p>Snapshotting, validation, approval, and rollback for prepaid pricing to keep compliance and accuracy intact.</p>
+          <ul class="mini-list">
+            <li>Guardrails for risky updates</li>
+            <li>Auditable workflows</li>
+            <li>Rapid rollback path</li>
+          </ul>
+        </article>
+        <article class="card" data-animate="lift">
+          <div class="pill subtle">AI/LLM</div>
+          <h3>Document validation agents</h3>
+          <p>Researching and building LLM-powered validation over cooperation agreements, integrated with core systems and governed prompts.</p>
+          <ul class="mini-list">
+            <li>LLM + retrieval pipeline</li>
+            <li>Langfuse tracing & prompt safety</li>
+            <li>Fits existing approval loops</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="card" data-animate="lift">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Let's build something</h2>
+          <p class="muted">Open to collaborations on AI/ML products, fraud systems, and platform work.</p>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <span class="icon-circle"><i class="fa-solid fa-envelope"></i></span>
+              <div>
+                <p class="label">Email</p>
+                <a href="mailto:adityaadit677@gmail.com">adityaadit677@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon-circle"><i class="fa-solid fa-phone"></i></span>
+              <div>
+                <p class="label">Phone</p>
+                <a href="tel:+6285649967827">+62 856 4996 7827</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="icon-circle"><i class="fa-brands fa-linkedin"></i></span>
+              <div>
+                <p class="label">LinkedIn</p>
+                <a href="https://linkedin.com/in/adityapn" target="_blank" rel="noreferrer">linkedin.com/in/adityapn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cta-panel">
+          <p class="muted">Prefer a quick hello?</p>
+          <a class="pill-btn primary block" href="mailto:adityaadit677@gmail.com">Email me</a>
+          <a class="pill-btn ghost block" href="https://linkedin.com/in/adityapn" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
+        </div>
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <p class="brand">Aditya PN</p>
+        <p class="muted">AI/ML Engineering Specialist · Fintech, Fraud, Platform</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
