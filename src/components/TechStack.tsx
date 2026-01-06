@@ -11,55 +11,53 @@ const stackData = [
         skills: [
             { name: 'Python', icon: 'devicon-python-plain colored' },
             { name: 'SQL', icon: 'fa-solid fa-database text-blue-400' },
-            { name: 'TypeScript', icon: 'devicon-typescript-plain colored' },
         ]
     },
     {
         category: 'AI / ML',
         skills: [
-            { name: 'NLP', icon: 'fa-solid fa-language text-purple-400' },
-            { name: 'Deep Learning', icon: 'fa-solid fa-brain text-pink-400' },
-            { name: 'Transformers', icon: 'fa-solid fa-robot text-indigo-400' },
+            { name: 'Machine Learning', icon: 'fa-solid fa-brain text-pink-400' },
+            { name: 'Deep Learning', icon: 'fa-solid fa-network-wired text-purple-400' },
+            { name: 'NLP', icon: 'fa-solid fa-language text-indigo-400' },
+            { name: 'Transformers', icon: 'fa-solid fa-robot text-yellow-400' },
             { name: 'PyTorch', icon: 'devicon-pytorch-original colored' },
-            { name: 'LangChain', icon: 'fa-solid fa-diagram-project text-green-400' },
+            { name: 'Spacy', icon: 'fa-solid fa-comment-dots text-blue-300' },
+            { name: 'Semantic Search', icon: 'fa-solid fa-magnifying-glass text-green-400' },
+        ]
+    },
+    {
+        category: 'Frameworks',
+        skills: [
+            { name: 'LangChain', icon: 'fa-solid fa-link text-green-400' },
+            { name: 'Langfuse', icon: 'fa-solid fa-shield-halved text-red-400' },
+            { name: 'RestAPI', icon: 'fa-solid fa-server text-gray-400' },
+            { name: 'Prompt Eng.', icon: 'fa-solid fa-terminal text-orange-400' },
         ]
     },
     {
         category: 'Databases',
         skills: [
-            { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored' },
-            { name: 'Redis', icon: 'devicon-redis-plain colored' },
-            { name: 'MongoDB', icon: 'devicon-mongodb-plain colored' },
             { name: 'Milvus', icon: 'fa-solid fa-cubes text-blue-500' },
+            { name: 'MongoDB', icon: 'devicon-mongodb-plain colored' },
             { name: 'Elasticsearch', icon: 'devicon-elasticsearch-plain colored' },
         ]
     },
     {
         category: 'Cloud & Infra',
         skills: [
-            { name: 'Docker', icon: 'devicon-docker-plain colored' },
-            { name: 'Kubernetes', icon: 'devicon-kubernetes-plain colored' },
-            { name: 'Grafana', icon: 'devicon-grafana-original colored' },
-            { name: 'GCloud', icon: 'devicon-googlecloud-plain colored' },
+            { name: 'Docker & K8s', icon: 'devicon-kubernetes-plain colored' },
+            { name: 'GCP', icon: 'devicon-googlecloud-plain colored' },
             { name: 'Ubuntu', icon: 'devicon-ubuntu-plain colored' },
-        ]
-    },
-    {
-        category: 'Backend & Services',
-        skills: [
-            { name: 'Microservices', icon: 'fa-solid fa-microchip text-slate-300' },
-            { name: 'REST APIs', icon: 'fa-solid fa-wifi text-slate-300' },
-            { name: 'Kafka', icon: 'devicon-apachekafka-plain colored' },
         ]
     },
     {
         category: 'MLOps',
         skills: [
-            { name: 'Git', icon: 'devicon-git-plain colored' },
+            { name: 'MLFlow', icon: 'fa-solid fa-chart-line text-blue-400' },
             { name: 'Airflow', icon: 'devicon-apacheairflow-plain colored' },
             { name: 'ArgoCD', icon: 'fa-solid fa-arrows-rotate text-orange-400' },
-            { name: 'MLFlow', icon: 'fa-solid fa-chart-line text-blue-400' },
-            { name: 'Langfuse', icon: 'fa-solid fa-shield-halved text-red-400' },
+            { name: 'Kafka', icon: 'devicon-apachekafka-plain colored' },
+            { name: 'LabelStudio', icon: 'fa-solid fa-tag text-teal-400' },
         ]
     }
 ];

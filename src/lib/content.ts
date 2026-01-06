@@ -5,6 +5,7 @@ export const content = {
         nav: {
             about: 'About',
             experience: 'Experience',
+            education: 'Education',
             skills: 'Skills',
             projects: 'Projects',
             contact: 'Contact',
@@ -24,44 +25,77 @@ export const content = {
                 {
                     role: 'PLT AI & ML Engineering Specialist',
                     company: 'LinkAja',
+                    period: 'Jan 2025 – Current',
+                    type: 'Hybrid',
+                    tag: 'Leadership',
                     description: [
-                        'Lead the AI/ML squad, owning delivery and production stability.',
-                        'Automated denom updates with validation, approvals, and rollback paths to protect pricing accuracy.',
-                        'Researching document validation flows using LLMs integrated with the core system.',
-                        'Maintain e-KYC stack (OCR, biometrics, ID analysis) and optimize infra costs via GKE CronJobs.',
+                        'Responsible for leading LinkAja\'s AI ML team.',
+                        'Designed and implemented automated denomination (denom) update system for prepaid products, including snapshotting, validation, approval, and rollback mechanisms to ensure pricing accuracy and compliance.',
+                        'Ongoing research on the document validation process for cooperation agreements with configuration in the core system using Large Language Model (OpenAI).',
+                        'Maintain the deployment of e-KYC services such as OCR, face biometrics, and ID card analysis.',
+                        'Optimizing AI/ML infrastructure costs by migrating the Cloud Run scheduler to a GKE CronJob.',
                     ],
                 },
                 {
                     role: 'Senior AI & ML Engineering Associate',
                     company: 'LinkAja',
+                    period: 'Dec 2023 – Dec 2024',
+                    type: 'Hybrid',
+                    tag: 'AI/ML',
                     description: [
-                        'Deployed in-house embedding and reranking models with Hugging Face TEI.',
-                        'Integrated Langfuse for tracing and prompt governance across LLM projects.',
-                        'Built GKE-hosted agents (revenue, disbursement, Confluence) using OpenAI + LangChain.',
-                        'Ran fraud/AI scientist services via ArgoCD + GKE; used GCS for model storage and schedulers.',
-                        'Shipped churn prediction to guide promotion targeting.',
+                        'Deploy embedding and reranking in-house model using Text Embedding Inference from Hugging Face.',
+                        'Set up and integrate the existing LLM project with Langfuse as a tracing and prompt management tool.',
+                        'Researching, developing, and deploying service on Google Kubernetes Engine including Embedding Model, Reranking Model and LangChain Agent (using OpenAI) for several use case chatbots (Revenue Agent, Disbursement Agent, Confluence Agent).',
+                        'Deployment and Maintenance of Research AI Scientist or Fraud Management Team Services using ArgoCD and GKE.',
+                        'Utilized Google Storage for model storage and implemented Cloud Functions/Scheduler for service scheduling.',
+                        'Develop and deploy a churn prediction model to support the business in determining promotions for customers.',
                     ],
                 },
                 {
                     role: 'Lead AI Engineer',
-                    company: 'PT eBesak Teknologi',
+                    company: 'PT eBdesk Teknologi',
+                    period: 'Nov 2021 – Nov 2023',
+                    type: 'On-site',
+                    tag: 'NLP',
                     description: [
-                        'Built semantic search with XLM-RoBERTa embeddings + Milvus across multi-format corpora.',
-                        'Created CLIP-powered image search for caption/image matching within chat experiences.',
-                        'Designed Ray-based enrichment pipelines (NER, sentiment, summarization, fake news, etc.).',
-                        'Fine-tuned BERT clustering for news groupings, aiding daily reporting.',
+                        'Developing a LLM-based application using semantic search as the knowledge retrieval method, accomplished by fine-tuning the XLM-RoBERTa model with Milvus as storage.',
+                        'Developing an Image Search Engine using OpenAI\'s Open-Source CLIP Model for Matching Input Captions or Images, stored in Milvus.',
+                        'Developing and Deploying a pipeline enrich data using Ray, encompassing engines like NER, Sentiment Analysis, Emotion Analysis, Summarization, and Fake News detection.',
+                        'Fine-tuning a clustering model using Sentence Transformers with BERT for clustering news articles.',
+                        'Updating all profiling engines to process social media account data for demographic and psychographic analysis.',
                     ],
                 },
                 {
                     role: 'AI Engineer',
                     company: 'PT eBdesk Teknologi',
+                    period: 'Nov 2020 – Nov 2021',
+                    type: 'On-site',
+                    tag: 'Delivery',
                     description: [
-                        'Owned text processing engines in production with full MLOps workflow.',
-                        'Built translation with MarianMT for RU/FR/AR/ZH/ES to EN/ID news streams.',
-                        'Set up LabelStudio, MLFlow, Ray/FastAPI on Kubernetes, and Sentry monitoring.',
+                        'Maintaining and managing all engines for text processing in a production environment, and establishing an MLOps workflow.',
+                        'Development: Creating training data for annotation using tools like LabelStudio.',
+                        'Deployment: Deploying using a Ray cluster or utilizing FastAPI on Kubernetes.',
+                        'Monitoring: Monitoring training results using MLFLOW and tracking errors using Sentry.',
+                        'Maintenance: Leveraging Git Flow for organized code management.',
+                        'Develop a translation model using MarianMT, trained on the Opus dataset (RU, FR, AR, ZH, ES to EN, ID).',
                     ],
                 },
             ],
+        },
+        education: {
+            title: 'Education',
+            items: [
+                {
+                    degree: "Master's degree in Mathematics",
+                    school: 'Institut Teknologi Sepuluh Nopember',
+                    year: 'Jan 2018 – Aug 2019',
+                },
+                {
+                    degree: "Bachelor's degree in Mathematics",
+                    school: 'Universitas Airlangga',
+                    year: 'Jul 2013 – Sep 2017',
+                },
+            ]
         },
         projects: {
             title: 'Selected Work',
@@ -87,8 +121,15 @@ export const content = {
             ]
         },
         stack: {
-            title: 'Tech Stack',
-            description: 'Technical expertise spanning backend systems, fintech solutions, and large-scale AI/ML infrastructure.',
+            title: 'Key Skills',
+            description: 'Core competencies and technical stack.',
+            items: [
+                'Python', 'Natural Language Processing', 'Langchain', 'Machine Learning', 'Deep Learning',
+                'Pytorch', 'RestAPI', 'Semantic Search', 'Transformers', 'Docker & Kubernetes',
+                'Elasticsearch', 'MongoDB', 'Milvus', 'SQL', 'Ubuntu', 'Airflow', 'MLFlow',
+                'LabelStudio', 'Spacy', 'Google Cloud Platform', 'ArgoCD', 'Kafka', 'Langfuse',
+                'Prompt Engineering'
+            ]
         },
         footer: {
             title: "Let's build something",
@@ -102,6 +143,7 @@ export const content = {
         nav: {
             about: 'Tentang',
             experience: 'Pengalaman',
+            education: 'Pendidikan',
             skills: 'Keahlian',
             projects: 'Proyek',
             contact: 'Kontak',
@@ -121,44 +163,77 @@ export const content = {
                 {
                     role: 'PLT AI & ML Engineering Specialist',
                     company: 'LinkAja',
+                    period: 'Jan 2025 – Saat Ini',
+                    type: 'Hybrid',
+                    tag: 'Leadership',
                     description: [
-                        'Memimpin tim AI/ML, bertanggung jawab atas delivery dan stabilitas produksi.',
-                        'Otomatisasi pembaruan denom dengan validasi dan alur persetujuan untuk akurasi harga.',
-                        'Riset validasi dokumen menggunakan LLM yang terintegrasi dengan sistem inti.',
-                        'Memelihara stack e-KYC (OCR, biometrik, analisis ID) dan optimasi biaya infra via GKE CronJobs.',
+                        'Bertanggung jawab memimpin tim AI ML LinkAja.',
+                        'Merancang dan mengimplementasikan sistem pembaruan denom otomatis untuk produk prabayar, termasuk snapshot, validasi, persetujuan, dan rollback.',
+                        'Riset berjalan tentang proses validasi dokumen untuk perjanjian kerja sama menggunakan LLM (OpenAI).',
+                        'Memelihara layanan e-KYC seperti OCR, biometrik wajah, dan analisis KTP.',
+                        'Mengoptimalkan biaya infrastruktur AI/ML dengan migrasi dari Cloud Run scheduler ke GKE CronJob.',
                     ],
                 },
                 {
                     role: 'Senior AI & ML Engineering Associate',
                     company: 'LinkAja',
+                    period: 'Des 2023 – Des 2024',
+                    type: 'Hybrid',
+                    tag: 'AI/ML',
                     description: [
-                        'Deploy model embedding dan reranking in-house dengan Hugging Face TEI.',
-                        'Integrasi Langfuse untuk tracing dan tata kelola prompt di proyek LLM.',
-                        'Membangun agen di GKE (revenue, disbursement, Confluence) dengan OpenAI + LangChain.',
-                        'Menjalankan layanan fraud/AI scientist via ArgoCD + GKE; menggunakan GCS untuk storage model.',
-                        'Mengirimkan prediksi churn untuk panduan target promosi.',
+                        'Deploy model embedding dan reranking in-house menggunakan Text Embedding Inference dari Hugging Face.',
+                        'Integrasi Langfuse untuk tracing dan tata kelola prompt pada proyek LLM.',
+                        'Riset, pengembangan, dan deployment layanan di GKE termasuk Model Embedding, Reranking, dan Agen LangChain untuk chatbot (Revenue, Disbursement, Confluence).',
+                        'Deployment dan Pemeliharaan layanan tim Fraud/AI Scientist menggunakan ArgoCD dan GKE.',
+                        'Menggunakan Google Storage untuk penyimpanan model dan Cloud Functions/Scheduler untuk penjadwalan layanan.',
+                        'Mengembangkan dan deploy model prediksi churn untuk mendukung bisnis dalam menentukan promosi pelanggan.',
                     ],
                 },
                 {
                     role: 'Lead AI Engineer',
-                    company: 'PT eBesak Teknologi',
+                    company: 'PT eBdesk Teknologi',
+                    period: 'Nov 2021 – Nov 2023',
+                    type: 'On-site',
+                    tag: 'NLP',
                     description: [
-                        'Membangun pencarian semantik dengan embedding XLM-RoBERTa + Milvus.',
-                        'Membuat pencarian gambar berbasis CLIP untuk pencocokan caption/gambar dalam chat.',
-                        'Merancang pipeline enrichment berbasis Ray (NER, sentimen, ringkasan, berita palsu, dll).',
-                        'Fine-tuning clustering BERT untuk pengelompokan berita laporan harian.',
+                        'Mengembangkan aplikasi berbasis LLM menggunakan pencarian semantik dengan XLM-RoBERTa dan Milvus.',
+                        'Mengembangkan Mesin Pencari Gambar menggunakan Model CLIP OpenAI untuk pencocokan Caption/Gambar.',
+                        'Mengembangkan dan deploy pipeline pengayaan data dengan Ray (NER, Sentimen, Emosi, Peringkasan, Berita Palsu, dll).',
+                        'Fine-tuning model clustering menggunakan Sentence Transformers dengan BERT untuk pengelompokan berita.',
+                        'Memperbarui semua mesin profiling untuk memproses data akun media sosial untuk analisis demografis.',
                     ],
                 },
                 {
                     role: 'AI Engineer',
                     company: 'PT eBdesk Teknologi',
+                    period: 'Nov 2020 – Nov 2021',
+                    type: 'On-site',
+                    tag: 'Delivery',
                     description: [
-                        'Mengelola engine pemrosesan teks di produksi dengan alur kerja MLOps penuh.',
-                        'Membangun terjemahan dengan MarianMT untuk arus berita RU/FR/AR/ZH/ES ke EN/ID.',
-                        'Setup LabelStudio, MLFlow, Ray/FastAPI di Kubernetes, dan monitoring Sentry.',
+                        'Mengelola engine pemrosesan teks di produksi dan membangun workflow MLOps.',
+                        'Development: Membuat data training menggunakan LabelStudio.',
+                        'Deployment: Deploy menggunakan cluster Ray atau FastAPI di Kubernetes.',
+                        'Monitoring: Memantau hasil training dengan MLFLOW dan tracking error dengan Sentry.',
+                        'Maintenance: Menggunakan Git Flow untuk manajemen kode yang terorganisir.',
+                        'Mengembangkan model terjemahan dengan MarianMT (RU, FR, AR, ZH, ES ke EN, ID).',
                     ],
                 },
             ],
+        },
+        education: {
+            title: 'Pendidikan',
+            items: [
+                {
+                    degree: "S2 Matematika",
+                    school: 'Institut Teknologi Sepuluh Nopember',
+                    year: 'Jan 2018 – Agu 2019',
+                },
+                {
+                    degree: "S1 Matematika",
+                    school: 'Universitas Airlangga',
+                    year: 'Jul 2013 – Sep 2017',
+                },
+            ]
         },
         projects: {
             title: 'Karya Terpilih',
@@ -184,8 +259,15 @@ export const content = {
             ]
         },
         stack: {
-            title: 'Tech Stack',
-            description: 'Keahlian teknis mencakup sistem backend, solusi fintech, dan infrastruktur AI/ML skala besar.',
+            title: 'Keahlian Utama',
+            description: 'Kompetensi inti dan teknologi.',
+            items: [
+                'Python', 'Natural Language Processing', 'Langchain', 'Machine Learning', 'Deep Learning',
+                'Pytorch', 'RestAPI', 'Semantic Search', 'Transformers', 'Docker & Kubernetes',
+                'Elasticsearch', 'MongoDB', 'Milvus', 'SQL', 'Ubuntu', 'Airflow', 'MLFlow',
+                'LabelStudio', 'Spacy', 'Google Cloud Platform', 'ArgoCD', 'Kafka', 'Langfuse',
+                'Prompt Engineering'
+            ]
         },
         footer: {
             title: 'Mari bangun sesuatu',

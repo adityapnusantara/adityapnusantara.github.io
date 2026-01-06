@@ -52,13 +52,15 @@ export default function Experience() {
                       For now I will reconstruct the full objects in the component by merging static data with translation data.
                   */}
                                     <div className="flex flex-col items-end gap-2">
-                                        {/* Period/Tag are missing in t.experience.roles, I need to match them by index or hardcode them if I didn't add them. 
-                        I will assume for this step I should have added them. 
-                        Since I can't edit content.ts in this same turn effectively without complex logic,
-                        I will map the translations to the static data structure.
-                    */}
-                                        {/* Temporary Fix: Hardcoding the dates/tags based on index to match the content.ts order. */}
-                                        <ExperienceMeta index={index} />
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">
+                                            <Calendar size={12} />
+                                            {/* @ts-ignore - dynamic content */}
+                                            {exp.period}
+                                        </span>
+                                        <span className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-medium border border-cyan-500/20">
+                                            {/* @ts-ignore - dynamic content */}
+                                            {exp.tag}
+                                        </span>
                                     </div>
                                 </div>
 
@@ -77,27 +79,4 @@ export default function Experience() {
             </div>
         </section>
     );
-}
-
-// Helper to render the missing metadata that I forgot to put in content.ts
-function ExperienceMeta({ index }: { index: number }) {
-    // Reconstructing the metadata from the original file
-    const meta = [
-        { period: 'Jan 2025 – Present', type: 'Hybrid', tag: 'Leadership' },
-        { period: 'Dec 2023 – Dec 2024', type: 'Hybrid', tag: 'AI/ML' },
-        { period: 'Nov 2021 – Nov 2023', type: 'On-site', tag: 'NLP' },
-        { period: 'Nov 2020 – Nov 2021', type: 'On-site', tag: 'Delivery' },
-    ][index];
-
-    return (
-        <>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-slate-300">
-                <Calendar size={12} />
-                {meta.period}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-medium border border-cyan-500/20">
-                {meta.tag}
-            </span>
-        </>
-    )
 }
