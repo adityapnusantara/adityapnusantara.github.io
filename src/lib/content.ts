@@ -120,6 +120,41 @@ export const content = {
                 }
             ]
         },
+        personalProjects: {
+            title: 'Personal Projects',
+            items: [
+                {
+                    title: 'Orion',
+                    description: 'A FastAPI-based backend for building retrieval-augmented agent experiences, answering domain-specific questions grounded in a curated knowledge base.',
+                    link: 'https://github.com/adityapnusantara/orion',
+                    details: [
+                        'Production-minded RAG API',
+                        'Automated knowledge ingestion pipeline',
+                        'LLM-powered assistant with grounded responses',
+                    ]
+                },
+                {
+                    title: 'TalentMatchAI',
+                    description: 'A Streamlit application that helps recruiters compare job descriptions with candidate CVs using Groq-backed LangChain agent.',
+                    link: 'https://github.com/adityapnusantara/TalentMatchAI',
+                    details: [
+                        'Automated scoring with Groq + Langfuse',
+                        'Batch processing for multiple candidates',
+                        'Rich UI with Streamlit',
+                    ]
+                },
+                {
+                    title: 'Moon',
+                    description: 'A template project for building Model Context Protocol (MCP) backends using FastMCP and Qdrant.',
+                    link: 'https://github.com/adityapnusantara/moon',
+                    details: [
+                        'FastMCP-powered MCP server',
+                        'Context retrieval from Qdrant vector DB',
+                        'Docker & Poetry ready',
+                    ]
+                }
+            ]
+        },
         stack: {
             title: 'Key Skills',
             description: 'Core competencies and technical stack.',
@@ -254,6 +289,41 @@ export const content = {
                         'Pipeline LLM + retrieval',
                         'Langfuse tracing & keamanan prompt',
                         'Sesuai dengan alur persetujuan yang ada',
+                    ]
+                }
+            ]
+        },
+        personalProjects: {
+            title: 'Proyek Personal',
+            items: [
+                {
+                    title: 'Orion',
+                    description: 'Backend berbasis FastAPI untuk membangun pengalaman agen retrieval-augmented, menjawab pertanyaan spesifik domain berdasarkan basis pengetahuan yang dikurasi.',
+                    link: 'https://github.com/adityapnusantara/orion',
+                    details: [
+                        'API RAG berorientasi produksi',
+                        'Pipeline ingesti pengetahuan otomatis',
+                        'Asisten bertenaga LLM dengan respons terverifikasi',
+                    ]
+                },
+                {
+                    title: 'TalentMatchAI',
+                    description: 'Aplikasi Streamlit yang membantu perekrut membandingkan deskripsi pekerjaan dengan CV kandidat menggunakan agen LangChain berbasis Groq.',
+                    link: 'https://github.com/adityapnusantara/TalentMatchAI',
+                    details: [
+                        'Penilaian otomatis dengan Groq + Langfuse',
+                        'Pemrosesan batch untuk banyak kandidat',
+                        'UI kaya dengan Streamlit',
+                    ]
+                },
+                {
+                    title: 'Moon',
+                    description: 'Proyek template untuk membangun backend Model Context Protocol (MCP) menggunakan FastMCP dan Qdrant.',
+                    link: 'https://github.com/adityapnusantara/moon',
+                    details: [
+                        'Server MCP bebasis FastMCP',
+                        'Retrieval konteks dari Qdrant vector DB',
+                        'Siap pakai dengan Docker & Poetry',
                     ]
                 }
             ]

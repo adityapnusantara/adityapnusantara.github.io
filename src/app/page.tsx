@@ -4,6 +4,7 @@ import Experience from '@/components/Experience';
 import Education from '@/components/Education';
 import TechStack from '@/components/TechStack';
 import Projects from '@/components/Projects';
+import PersonalProjects from '@/components/PersonalProjects';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Experience />
       <Education />
       <Projects />
+      <PersonalProjects />
       <TechStack />
       <Footer />
     </main>
