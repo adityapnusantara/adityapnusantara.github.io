@@ -166,6 +166,17 @@ export const content = {
                 'Prompt Engineering'
             ]
         },
+        contactSection: {
+            title: 'Get in Touch',
+            subtitle: 'Have a project in mind or just want to chat? Send me a message.',
+            form: {
+                name: 'Your Name',
+                email: 'Your Email',
+                subject: 'Subject',
+                message: 'Your Message',
+                send: 'Send Message',
+            }
+        },
         footer: {
             title: "Let's build something",
             subtitle: 'Open to collaborations on AI/ML products, fraud systems, and platform work.',
@@ -338,6 +349,17 @@ export const content = {
                 'LabelStudio', 'Spacy', 'Google Cloud Platform', 'ArgoCD', 'Kafka', 'Langfuse',
                 'Prompt Engineering'
             ]
+        },
+        contactSection: {
+            title: 'Hubungi Saya',
+            subtitle: 'Punya proyek atau sekadar ingin mengobrol? Kirimkan pesan.',
+            form: {
+                name: 'Nama Anda',
+                email: 'Email Anda',
+                subject: 'Subjek',
+                message: 'Pesan Anda',
+                send: 'Kirim Pesan',
+            }
         },
         footer: {
             title: 'Mari bangun sesuatu',

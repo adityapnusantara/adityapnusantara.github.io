@@ -43,7 +43,7 @@ export default function Navbar() {
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 <Link href="/" className="text-xl font-bold tracking-tighter text-white">
-                    Aditya<span className="text-cyan-400">PN</span>
+                    Aditya Pratama Nusantara
                 </Link>
 
                 {/* Desktop Menu */}

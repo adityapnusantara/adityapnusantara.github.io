@@ -8,7 +8,7 @@ export default function Footer() {
     const { t } = useLanguage();
 
     return (
-        <footer id="contact" className="bg-slate-950 pt-20 pb-10 border-t border-white/5">
+        <footer className="bg-slate-950 pt-20 pb-10 border-t border-white/5">
             <div className="container mx-auto px-6">
 
                 {/* Contact CTA */}
