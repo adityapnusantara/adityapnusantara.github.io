@@ -8,6 +8,7 @@ export const content = {
             education: 'Education',
             skills: 'Skills',
             projects: 'Projects',
+            chat: 'Agent Introduction',
             contact: 'Contact',
         },
         hero: {
@@ -155,6 +156,18 @@ export const content = {
                 }
             ]
         },
+        agentChat: {
+            title: 'Agent Introduction',
+            subtitle: 'Chat with Agent Introduction to learn more about Adit’s background, projects, and skills.',
+            name: 'Agent Introduction',
+            inputPlaceholder: 'Type a message and press Enter to send',
+            send: 'Send',
+            waiting: 'Agent is thinking...',
+            welcome: "Hi, I'm the agent. Ask about my work, projects, or stack!",
+            missingEndpoint: 'Hi, fitur ini masih sedang dikerjakan. Kembali lagi sebentar lagi, ya.',
+            error: 'Unable to reach the agent. Please try again.',
+            emptyResponse: 'The agent did not return any text.',
+        },
         stack: {
             title: 'Key Skills',
             description: 'Core competencies and technical stack.',
@@ -192,6 +205,7 @@ export const content = {
             education: 'Pendidikan',
             skills: 'Keahlian',
             projects: 'Proyek',
+            chat: 'Agent Introduction',
             contact: 'Kontak',
         },
         hero: {
@@ -338,6 +352,18 @@ export const content = {
                     ]
                 }
             ]
+        },
+        agentChat: {
+            title: 'Agent Introduction',
+            subtitle: 'Ngobrol dengan Agent Introduction untuk mengenal lebih dalam tentang Adit, proyek, dan skill.',
+            name: 'Agent Introduction',
+            inputPlaceholder: 'Ketik pesan dan tekan Enter untuk mengirim',
+            send: 'Kirim',
+            waiting: 'Agen sedang berpikir...',
+            welcome: 'Hai, saya agen yang siap bantu. Tanyakan apa saja tentang kerjaan atau proyek!',
+            missingEndpoint: 'Halo, fitur ini sedang dikerjakan. Silakan kembali lagi nanti.',
+            error: 'Agen tidak dapat dihubungi. Coba lagi ya.',
+            emptyResponse: 'Agen tidak mengembalikan teks apa pun.',
         },
         stack: {
             title: 'Keahlian Utama',

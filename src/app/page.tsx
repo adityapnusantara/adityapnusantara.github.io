@@ -7,6 +7,7 @@ import Projects from '@/components/Projects';
 import PersonalProjects from '@/components/PersonalProjects';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
+import AgentChat from '@/components/AgentChat';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Education />
       <Projects />
       <PersonalProjects />
+      <AgentChat />
       <TechStack />
       <Contact />
       <Footer />
