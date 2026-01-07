@@ -66,7 +66,7 @@ export default function Contact() {
     return (
         <section id="contact" className="py-20 relative overflow-hidden">
             {/* Background elements */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -z-10" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/12 rounded-full blur-[100px] -z-10" />
 
             <div className="container mx-auto px-6">
                 <motion.div
@@ -77,23 +77,23 @@ export default function Contact() {
                 >
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t.contactSection.title}</h2>
-                        <p className="text-slate-400 text-lg">{t.contactSection.subtitle}</p>
+                        <p className="text-cyan-100/80 text-lg">{t.contactSection.subtitle}</p>
                     </div>
 
-                    <div className="bg-slate-900/40 border border-white/10 rounded-2xl p-8 md:p-10 backdrop-blur-md shadow-xl relative overflow-hidden">
+                    <div className="bg-[#061f3f]/70 border border-cyan-500/15 rounded-2xl p-8 md:p-10 backdrop-blur-md shadow-xl shadow-cyan-500/10 relative overflow-hidden">
 
                         {/* Success Message */}
                         {status === 'success' && (
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="absolute inset-0 bg-slate-900/95 z-20 flex flex-col items-center justify-center text-center p-8"
+                                className="absolute inset-0 bg-[#031735]/95 z-20 flex flex-col items-center justify-center text-center p-8"
                             >
                                 <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center text-green-500 mb-6">
                                     <CheckCircle2 size={40} />
                                 </div>
                                 <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
-                                <p className="text-slate-400 max-w-md mb-8">
+                                <p className="text-cyan-100/80 max-w-md mb-8">
                                     Thank you for reaching out. I'll get back to you as soon as possible.
                                 </p>
                                 <button
@@ -109,11 +109,11 @@ export default function Contact() {
                             <div className="grid md:grid-cols-2 gap-6">
                                 {/* Name Input */}
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium text-slate-300 ml-1">
+                                    <label htmlFor="name" className="text-sm font-medium text-cyan-100 ml-1">
                                         {t.contactSection.form.name}
                                     </label>
                                     <div className="relative group">
-                                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-cyan-400 transition-colors">
+                                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-cyan-200/60 group-focus-within:text-cyan-300 transition-colors">
                                             <User size={18} />
                                         </div>
                                         <input
@@ -124,7 +124,7 @@ export default function Contact() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             disabled={status === 'submitting'}
-                                            className="w-full bg-slate-950/50 border border-slate-700/50 text-white rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600 disabled:opacity-50"
+                                            className="w-full bg-[#021024]/70 border border-cyan-500/10 text-white rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all placeholder:text-cyan-100/40 disabled:opacity-50"
                                             placeholder="John Doe"
                                         />
                                     </div>
@@ -132,11 +132,11 @@ export default function Contact() {
 
                                 {/* Email Input */}
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium text-slate-300 ml-1">
+                                    <label htmlFor="email" className="text-sm font-medium text-cyan-100 ml-1">
                                         {t.contactSection.form.email}
                                     </label>
                                     <div className="relative group">
-                                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-cyan-400 transition-colors">
+                                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-cyan-200/60 group-focus-within:text-cyan-300 transition-colors">
                                             <Mail size={18} />
                                         </div>
                                         <input
@@ -147,7 +147,7 @@ export default function Contact() {
                                             value={formData.email}
                                             onChange={handleChange}
                                             disabled={status === 'submitting'}
-                                            className="w-full bg-slate-950/50 border border-slate-700/50 text-white rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600 disabled:opacity-50"
+                                            className="w-full bg-[#021024]/70 border border-cyan-500/10 text-white rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all placeholder:text-cyan-100/40 disabled:opacity-50"
                                             placeholder="john@example.com"
                                         />
                                     </div>
@@ -156,11 +156,11 @@ export default function Contact() {
 
                             {/* Subject Input */}
                             <div className="space-y-2">
-                                <label htmlFor="subject" className="text-sm font-medium text-slate-300 ml-1">
+                                <label htmlFor="subject" className="text-sm font-medium text-cyan-100 ml-1">
                                     {t.contactSection.form.subject}
                                 </label>
                                 <div className="relative group">
-                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-cyan-400 transition-colors">
+                                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-cyan-200/60 group-focus-within:text-cyan-300 transition-colors">
                                         <Type size={18} />
                                     </div>
                                     <input
@@ -171,7 +171,7 @@ export default function Contact() {
                                         value={formData.subject}
                                         onChange={handleChange}
                                         disabled={status === 'submitting'}
-                                        className="w-full bg-slate-950/50 border border-slate-700/50 text-white rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600 disabled:opacity-50"
+                                        className="w-full bg-[#021024]/70 border border-cyan-500/10 text-white rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all placeholder:text-cyan-100/40 disabled:opacity-50"
                                         placeholder="Project Collaboration"
                                     />
                                 </div>
@@ -179,11 +179,11 @@ export default function Contact() {
 
                             {/* Message Input */}
                             <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-medium text-slate-300 ml-1">
+                                <label htmlFor="message" className="text-sm font-medium text-cyan-100 ml-1">
                                     {t.contactSection.form.message}
                                 </label>
                                 <div className="relative group">
-                                    <div className="absolute left-4 top-6 text-slate-500 group-focus-within:text-cyan-400 transition-colors">
+                                    <div className="absolute left-4 top-6 text-cyan-200/60 group-focus-within:text-cyan-300 transition-colors">
                                         <MessageSquare size={18} />
                                     </div>
                                     <textarea
@@ -194,7 +194,7 @@ export default function Contact() {
                                         value={formData.message}
                                         onChange={handleChange}
                                         disabled={status === 'submitting'}
-                                        className="w-full bg-slate-950/50 border border-slate-700/50 text-white rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all placeholder:text-slate-600 resize-none disabled:opacity-50"
+                                        className="w-full bg-[#021024]/70 border border-cyan-500/10 text-white rounded-xl py-3 pl-12 pr-4 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all placeholder:text-cyan-100/40 resize-none disabled:opacity-50"
                                         placeholder="Hello, I'd like to discuss..."
                                     />
                                 </div>

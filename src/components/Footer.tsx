@@ -8,7 +8,8 @@ export default function Footer() {
     const { t } = useLanguage();
 
     return (
-        <footer className="bg-slate-950 pt-20 pb-10 border-t border-white/5">
+        <footer className="bg-[#041b3a] pt-20 pb-10 border-t border-cyan-500/10 relative overflow-hidden">
+            <div className="absolute inset-x-0 -top-40 h-64 bg-gradient-to-b from-cyan-500/15 to-transparent blur-3xl pointer-events-none" />
             <div className="container mx-auto px-6">
 
                 {/* Contact CTA */}
@@ -19,7 +20,7 @@ export default function Footer() {
                         viewport={{ once: true }}
                     >
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{t.footer.title}</h2>
-                        <p className="text-xl text-slate-400 mb-8">
+                        <p className="text-xl text-cyan-100/80 mb-8">
                             {t.footer.subtitle}
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -34,7 +35,7 @@ export default function Footer() {
                                 href="https://linkedin.com/in/adityapn"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="px-8 py-4 bg-slate-900 border border-white/10 text-white font-medium rounded-full hover:bg-slate-800 transition-all flex items-center gap-2"
+                                className="px-8 py-4 bg-white/10 border border-cyan-500/20 text-cyan-100 font-medium rounded-full hover:bg-white/15 transition-all flex items-center gap-2"
                             >
                                 <Linkedin size={20} />
                                 {t.footer.linkedin}
@@ -44,15 +45,15 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-slate-500 text-sm">
+                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-cyan-500/10 text-cyan-100/70 text-sm">
                     <div className="mb-4 md:mb-0">
-                        <p className="mb-1 text-slate-300 font-medium">Aditya Pratama Nusantara</p>
+                        <p className="mb-1 text-cyan-100 font-medium">Aditya Pratama Nusantara</p>
                         <p>{t.footer.role}</p>
                     </div>
                     <div className="flex gap-6">
-                        <a href="#home" className="hover:text-cyan-400 transition-colors">{t.nav.about}</a>
-                        <a href="#experience" className="hover:text-cyan-400 transition-colors">{t.nav.experience}</a>
-                        <a href="#skills" className="hover:text-cyan-400 transition-colors">{t.nav.skills}</a>
+                        <a href="#home" className="hover:text-cyan-300 transition-colors">{t.nav.about}</a>
+                        <a href="#experience" className="hover:text-cyan-300 transition-colors">{t.nav.experience}</a>
+                        <a href="#skills" className="hover:text-cyan-300 transition-colors">{t.nav.skills}</a>
                     </div>
                 </div>
             </div>

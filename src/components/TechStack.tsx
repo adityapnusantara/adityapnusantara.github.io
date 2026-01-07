@@ -66,7 +66,7 @@ export default function TechStack() {
     const { t } = useLanguage();
 
     return (
-        <section id="skills" className="py-20 bg-slate-900/30">
+        <section id="skills" className="py-20 bg-[#031b38]/50">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ export default function TechStack() {
                     className="mb-12 text-center"
                 >
                     <h2 className="text-3xl font-bold text-white mb-4">{t.stack.title}</h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto">
+                    <p className="text-cyan-100/80 max-w-2xl mx-auto">
                         {t.stack.description}
                     </p>
                 </motion.div>
@@ -88,18 +88,18 @@ export default function TechStack() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: groupIndex * 0.1 }}
-                            className="bg-slate-950 border border-white/5 rounded-xl p-6 hover:border-cyan-500/20 transition-all hover:bg-slate-900/80 group"
+                            className="bg-[#061f3f] border border-cyan-500/15 rounded-xl p-6 hover:border-cyan-400/25 transition-all hover:bg-[#082a52]/90 group shadow-lg shadow-cyan-500/10"
                         >
-                            <h3 className="text-lg font-semibold text-slate-200 mb-6 group-hover:text-cyan-400 transition-colors">
+                            <h3 className="text-lg font-semibold text-cyan-100 mb-6 group-hover:text-cyan-300 transition-colors">
                                 {group.category}
                             </h3>
                             <div className="flex flex-wrap gap-4">
                                 {group.skills.map((skill) => (
                                     <div key={skill.name} className="flex flex-col items-center gap-2 group/icon">
-                                        <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 group-hover/icon:bg-white/10 group-hover/icon:border-white/10 transition-all">
+                                        <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-cyan-500/10 group-hover/icon:bg-cyan-500/5 group-hover/icon:border-cyan-500/20 transition-all">
                                             <i className={`${skill.icon} text-2xl`}></i>
                                         </div>
-                                        <span className="text-xs text-slate-500 group-hover/icon:text-slate-300 transition-colors">
+                                        <span className="text-xs text-cyan-100/70 group-hover/icon:text-white transition-colors">
                                             {skill.name}
                                         </span>
                                     </div>
