@@ -25,8 +25,8 @@ export default function RootLayout({
       </head>
       <body className={clsx(spaceGrotesk.className, 'antialiased overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200')}>
         <LanguageProvider>
-          <div className="fixed inset-0 -z-10 h-full w-full bg-slate-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-          <div className="fixed bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"></div>
+          <div className="fixed inset-0 -z-10 h-full w-full bg-[#031735] bg-[radial-gradient(circle_at_20%_18%,rgba(56,189,248,0.22),transparent_36%),radial-gradient(circle_at_82%_12%,rgba(59,130,246,0.25),transparent_32%),radial-gradient(circle_at_50%_78%,rgba(14,165,233,0.18),transparent_38%)]"></div>
+          <div className="fixed bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,rgba(56,189,248,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(56,189,248,0.08)_1px,transparent_1px)] bg-[size:16px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_72%,transparent_100%)] -z-10"></div>
           {children}
         </LanguageProvider>
       </body>
