@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Bot, Loader2, Send, Sparkles, ShieldCheck } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Bot, Loader2, Send, ShieldCheck, MessageCircle, X } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
 
@@ -25,6 +25,7 @@ export default function AgentChat() {
     const [isSending, setIsSending] = useState(false);
     const [error, setError] = useState('');
     const messagesContainerRef = useRef<HTMLDivElement | null>(null);
+    const [isOpen, setIsOpen] = useState(true);
     const agentEndpoint = process.env.NEXT_PUBLIC_AGENT_API_URL;
 
     // Initialize session/user ids and seed welcome message
@@ -122,84 +123,109 @@ export default function AgentChat() {
     };
 
     return (
-        <section id="agent-chat" className="py-20 relative overflow-hidden bg-[#031b36]/50">
-            <div className="absolute -left-10 top-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-[90px] -z-10" />
-            <div className="absolute right-0 bottom-0 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px] -z-10" />
-
-            <div className="container mx-auto px-6">
-                <div className="flex items-center gap-4 mb-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-cyan-100 text-xs font-semibold">
-                        <Sparkles size={14} className="text-cyan-300" />
-                        API powered agent
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white">{t.agentChat.title}</h2>
-                </div>
-                <p className="text-cyan-100/80 mt-2 max-w-3xl mb-8">{t.agentChat.subtitle}</p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="bg-[#041c3b]/80 border border-cyan-500/15 rounded-2xl p-6 md:p-8 shadow-xl shadow-cyan-500/10 backdrop-blur-lg"
-                >
-                    <div
-                        className="space-y-4 max-h-[420px] overflow-y-auto pr-1"
-                        ref={messagesContainerRef}
+        <div id="agent-chat" className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3">
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.98 }}
+                        transition={{ duration: 0.2 }}
+                        className="w-[320px] sm:w-[380px] bg-[#041c3b]/95 border border-cyan-500/15 rounded-2xl shadow-2xl shadow-cyan-500/20 backdrop-blur-xl overflow-hidden"
                     >
-                        {messages.map((message) => (
-                            <div key={message.id} className={cn('flex', message.sender === 'user' ? 'justify-end' : 'justify-start')}>
-                                <div
-                                    className={cn(
-                                        'max-w-[85%] rounded-2xl px-4 py-3 text-sm shadow-lg',
-                                        message.sender === 'user'
-                                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
-                                            : 'bg-white/5 border border-cyan-500/10 text-cyan-50'
-                                    )}
-                                >
-                                    <div className="flex items-center gap-2 mb-1 text-xs uppercase tracking-wide">
-                                        {message.sender === 'user' ? <ShieldCheck size={14} /> : <Bot size={14} />}
-                                        <span className="opacity-80">{message.sender === 'user' ? 'You' : t.agentChat.name || 'Agent'}</span>
-                                    </div>
-                                    <p className="leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                        <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5">
+                            <div className="flex items-center gap-2 text-white font-semibold">
+                                <div className="p-2 rounded-lg bg-cyan-500/20 text-cyan-200 border border-cyan-500/30">
+                                    <Bot size={18} />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span>{t.agentChat.name || 'Agent Introduction'}</span>
+                                    <span className="text-xs text-cyan-100/70">{t.agentChat.title}</span>
                                 </div>
                             </div>
-                            ))}
-                        {isSending && (
-                            <div className="flex items-center gap-3 text-cyan-100/70 text-sm">
-                                <Loader2 size={16} className="animate-spin" />
-                                {t.agentChat.waiting}
-                            </div>
-                        )}
-                    </div>
-
-                    {error && (
-                        <div className="mt-4 text-sm text-red-200 bg-red-500/10 border border-red-500/30 px-4 py-3 rounded-xl">
-                            {error}
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="p-2 rounded-lg text-cyan-100 hover:text-white hover:bg-white/10"
+                                aria-label="Close chat"
+                            >
+                                <X size={18} />
+                            </button>
                         </div>
-                    )}
 
-                    <div className="mt-6 bg-white/5 border border-white/10 rounded-xl p-3 flex items-center gap-3">
-                        <textarea
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                            rows={2}
-                            placeholder={t.agentChat.inputPlaceholder}
-                            className="flex-1 bg-transparent outline-none border-none text-white placeholder:text-cyan-100/50 resize-none"
-                            disabled={isSending}
-                        />
-                        <motion.button
-                            whileTap={{ scale: 0.98 }}
-                            onClick={handleSend}
-                            disabled={isSending || !input.trim()}
-                            className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-4 py-3 rounded-xl font-semibold shadow-md shadow-cyan-500/25 disabled:opacity-60 disabled:cursor-not-allowed"
+                        <div className="px-4 pt-3 text-sm text-cyan-100/80">
+                            {t.agentChat.subtitle}
+                        </div>
+
+                        <div
+                            className="px-4 py-3 space-y-4 max-h-[360px] overflow-y-auto"
+                            ref={messagesContainerRef}
                         >
-                            {isSending ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
-                            {isSending ? t.agentChat.waiting : t.agentChat.send}
-                        </motion.button>
-                    </div>
-                </motion.div>
-            </div>
-        </section>
+                            {messages.map((message) => (
+                                <div key={message.id} className={cn('flex', message.sender === 'user' ? 'justify-end' : 'justify-start')}>
+                                    <div
+                                        className={cn(
+                                            'max-w-[90%] rounded-2xl px-3 py-2 text-sm shadow-lg',
+                                            message.sender === 'user'
+                                                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
+                                                : 'bg-white/5 border border-cyan-500/10 text-cyan-50'
+                                        )}
+                                    >
+                                        <div className="flex items-center gap-2 mb-1 text-[11px] uppercase tracking-wide">
+                                            {message.sender === 'user' ? <ShieldCheck size={12} /> : <Bot size={12} />}
+                                            <span className="opacity-80">{message.sender === 'user' ? 'You' : t.agentChat.name || 'Agent'}</span>
+                                        </div>
+                                        <p className="leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                                    </div>
+                                </div>
+                            ))}
+                            {isSending && (
+                                <div className="flex items-center gap-3 text-cyan-100/70 text-sm">
+                                    <Loader2 size={16} className="animate-spin" />
+                                    {t.agentChat.waiting}
+                                </div>
+                            )}
+                            {error && (
+                                <div className="text-sm text-red-200 bg-red-500/10 border border-red-500/30 px-3 py-2 rounded-xl">
+                                    {error}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="px-4 pb-4">
+                            <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center gap-3">
+                                <textarea
+                                    value={input}
+                                    onChange={(e) => setInput(e.target.value)}
+                                    onKeyDown={handleKeyDown}
+                                    rows={2}
+                                    placeholder={t.agentChat.inputPlaceholder}
+                                    className="flex-1 bg-transparent outline-none border-none text-white placeholder:text-cyan-100/50 resize-none"
+                                    disabled={isSending}
+                                />
+                                <motion.button
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={handleSend}
+                                    disabled={isSending || !input.trim()}
+                                    className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-2 rounded-xl font-semibold shadow-md shadow-cyan-500/25 disabled:opacity-60 disabled:cursor-not-allowed"
+                                >
+                                    {isSending ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                                    {isSending ? t.agentChat.waiting : t.agentChat.send}
+                                </motion.button>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setIsOpen((prev) => !prev)}
+                className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold shadow-lg shadow-cyan-500/25 border border-white/10"
+            >
+                <MessageCircle size={18} />
+                {isOpen ? 'Hide' : t.agentChat.title}
+            </motion.button>
+        </div>
     );
 }
