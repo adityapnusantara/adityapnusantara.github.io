@@ -25,8 +25,17 @@ export default function AgentChat() {
     const [isSending, setIsSending] = useState(false);
     const [error, setError] = useState('');
     const messagesContainerRef = useRef<HTMLDivElement | null>(null);
-    const [isOpen, setIsOpen] = useState(true);
-    const agentEndpoint = process.env.NEXT_PUBLIC_AGENT_API_URL;
+    const [isOpen, setIsOpen] = useState(false);
+
+    // Set initial open state based on screen width
+    useEffect(() => {
+        // Open by default on desktop (>= 768px), closed on mobile
+        if (window.innerWidth >= 768) {
+            setIsOpen(true);
+        }
+    }, []);
+    // Use n8n webhook URL directly
+    const agentEndpoint = 'https://n8n-azy7zvkpmcor.ceri.sumopod.my.id/webhook/e736d813-ecda-44c2-8c7a-da5d1eb547e9';
 
     // Initialize session/user ids and seed welcome message
     useEffect(() => {
@@ -68,28 +77,14 @@ export default function AgentChat() {
             localStorage.setItem(SESSION_STORAGE_KEY, newSession);
         }
 
-        if (!agentEndpoint) {
-            // Gracefully respond when endpoint is not configured, preserving the user's message
-            setMessages(prev => {
-                const userMsg: ChatMessage = { id: generateId('msg'), sender: 'user', text: trimmed };
-                const agentMsg: ChatMessage = { id: generateId('msg'), sender: 'agent', text: t.agentChat.missingEndpoint };
-                return [...prev, userMsg, agentMsg];
-            });
-            setInput('');
-            setIsSending(false);
-            setError('');
-            return;
-        }
-
         setMessages(prev => [...prev, { id: generateId('msg'), sender: 'user', text: trimmed }]);
         setInput('');
         setIsSending(true);
         setError('');
 
         const payload = {
-            input: trimmed,
-            user_id: USER_ID,
-            session_id: sessionId || localStorage.getItem(SESSION_STORAGE_KEY),
+            message: trimmed,
+            sessionId: sessionId || localStorage.getItem(SESSION_STORAGE_KEY),
         };
 
         try {
@@ -99,12 +94,16 @@ export default function AgentChat() {
                 body: JSON.stringify(payload),
             });
 
-            const data = await response.json().catch(() => ({}));
             if (!response.ok) {
-                throw new Error(data?.error || t.agentChat.error);
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData?.message || t.agentChat.error);
             }
 
-            const agentReply = data?.reply || data?.message || data?.answer || data?.response || t.agentChat.emptyResponse;
+            const data = await response.json();
+
+            // Handle n8n response structure
+            const agentReply = data.output || data.text || data.message || (Array.isArray(data) && data[0]?.output) || t.agentChat.emptyResponse;
+
             setMessages(prev => [...prev, { id: generateId('msg'), sender: 'agent', text: String(agentReply) }]);
         } catch (err) {
             console.error(err);
