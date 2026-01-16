@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: 'AI & ML Engineering Specialist building reliable production systems.',
 };
 
+
+
 export default function RootLayout({
   children,
 }: {
