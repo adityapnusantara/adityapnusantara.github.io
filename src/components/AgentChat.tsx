@@ -25,7 +25,15 @@ export default function AgentChat() {
     const [isSending, setIsSending] = useState(false);
     const [error, setError] = useState('');
     const messagesContainerRef = useRef<HTMLDivElement | null>(null);
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+
+    // Set initial open state based on screen width
+    useEffect(() => {
+        // Open by default on desktop (>= 768px), closed on mobile
+        if (window.innerWidth >= 768) {
+            setIsOpen(true);
+        }
+    }, []);
     // Use n8n webhook URL directly
     const agentEndpoint = 'https://n8n-azy7zvkpmcor.ceri.sumopod.my.id/webhook/e736d813-ecda-44c2-8c7a-da5d1eb547e9';
 
