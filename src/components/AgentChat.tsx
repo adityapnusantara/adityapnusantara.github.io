@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Loader2, Send, ShieldCheck, MessageCircle, X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Bot, Loader2, Send, ShieldCheck, MessageCircle, X, Maximize2, Minimize2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
 
@@ -26,6 +28,7 @@ export default function AgentChat() {
     const [error, setError] = useState('');
     const messagesContainerRef = useRef<HTMLDivElement | null>(null);
     const [isOpen, setIsOpen] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     // Set initial open state based on screen width
     useEffect(() => {
@@ -96,7 +99,7 @@ export default function AgentChat() {
 
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({}));
-                throw new Error(errorData?.message || t.agentChat.error);
+                throw new Error(errorData?.message || `Error ${response.status}: ${response.statusText}`);
             }
 
             const data = await response.json();
@@ -121,18 +124,32 @@ export default function AgentChat() {
         }
     };
 
+    // Toggle expand function
+    const toggleExpand = () => {
+        setIsExpanded(!isExpanded);
+    };
+
     return (
         <div id="agent-chat" className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            width: isExpanded ? '800px' : '320px',
+                            height: isExpanded ? '600px' : 'auto',
+                        }}
                         exit={{ opacity: 0, y: 20, scale: 0.98 }}
-                        transition={{ duration: 0.2 }}
-                        className="w-[320px] sm:w-[380px] bg-[#041c3b]/95 border border-cyan-500/15 rounded-2xl shadow-2xl shadow-cyan-500/20 backdrop-blur-xl overflow-hidden"
+                        transition={{ duration: 0.3 }}
+                        className={cn(
+                            "bg-[#041c3b]/95 border border-cyan-500/15 rounded-2xl shadow-2xl shadow-cyan-500/20 backdrop-blur-xl overflow-hidden flex flex-col transition-all duration-300",
+                            isExpanded ? "w-[80vw] h-[70vh] md:w-[800px] md:h-[600px]" : "w-[320px] sm:w-[380px]"
+                        )}
                     >
-                        <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5">
+                        <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5 shrink-0">
                             <div className="flex items-center gap-2 text-white font-semibold">
                                 <div className="p-2 rounded-lg bg-cyan-500/20 text-cyan-200 border border-cyan-500/30">
                                     <Bot size={18} />
@@ -142,28 +159,42 @@ export default function AgentChat() {
                                     <span className="text-xs text-cyan-100/70">{t.agentChat.title}</span>
                                 </div>
                             </div>
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="p-2 rounded-lg text-cyan-100 hover:text-white hover:bg-white/10"
-                                aria-label="Close chat"
-                            >
-                                <X size={18} />
-                            </button>
+                            <div className="flex items-center gap-1">
+                                <button
+                                    onClick={toggleExpand}
+                                    className="p-2 rounded-lg text-cyan-100 hover:text-white hover:bg-white/10 hidden md:block"
+                                    aria-label={isExpanded ? "Collapse" : "Expand"}
+                                >
+                                    {isExpanded ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+                                </button>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="p-2 rounded-lg text-cyan-100 hover:text-white hover:bg-white/10"
+                                    aria-label="Close chat"
+                                >
+                                    <X size={18} />
+                                </button>
+                            </div>
                         </div>
 
-                        <div className="px-4 pt-3 text-sm text-cyan-100/80">
-                            {t.agentChat.subtitle}
-                        </div>
+                        {!isExpanded && (
+                            <div className="px-4 pt-3 text-sm text-cyan-100/80 shrink-0">
+                                {t.agentChat.subtitle}
+                            </div>
+                        )}
 
                         <div
-                            className="px-4 py-3 space-y-4 max-h-[360px] overflow-y-auto"
+                            className={cn(
+                                "px-4 py-3 space-y-4 overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-cyan-500/20 scrollbar-track-transparent",
+                                isExpanded ? "max-h-[calc(600px-140px)]" : "max-h-[360px]"
+                            )}
                             ref={messagesContainerRef}
                         >
                             {messages.map((message) => (
                                 <div key={message.id} className={cn('flex', message.sender === 'user' ? 'justify-end' : 'justify-start')}>
                                     <div
                                         className={cn(
-                                            'max-w-[90%] rounded-2xl px-3 py-2 text-sm shadow-lg',
+                                            'max-w-[90%] rounded-2xl px-3 py-2 text-sm shadow-lg overflow-hidden',
                                             message.sender === 'user'
                                                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white'
                                                 : 'bg-white/5 border border-cyan-500/10 text-cyan-50'
@@ -173,7 +204,17 @@ export default function AgentChat() {
                                             {message.sender === 'user' ? <ShieldCheck size={12} /> : <Bot size={12} />}
                                             <span className="opacity-80">{message.sender === 'user' ? 'You' : t.agentChat.name || 'Agent'}</span>
                                         </div>
-                                        <p className="leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                                        <div className="prose prose-invert prose-sm max-w-none break-words
+                                            prose-p:leading-relaxed prose-pre:bg-black/30 prose-pre:border prose-pre:border-white/10
+                                            prose-headings:text-cyan-100 prose-a:text-cyan-300 prose-a:underline
+                                            prose-code:text-cyan-200 prose-code:bg-cyan-500/10 prose-code:px-1 prose-code:rounded
+                                            prose-table:border-collapse prose-th:border prose-th:border-cyan-500/30 prose-th:p-2 prose-th:bg-cyan-500/10
+                                            prose-td:border prose-td:border-cyan-500/20 prose-td:p-2"
+                                        >
+                                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                                {message.text}
+                                            </ReactMarkdown>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -190,13 +231,13 @@ export default function AgentChat() {
                             )}
                         </div>
 
-                        <div className="px-4 pb-4">
+                        <div className="px-4 pb-4 pt-2 shrink-0 bg-[#041c3b]">
                             <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center gap-3">
                                 <textarea
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyDown={handleKeyDown}
-                                    rows={2}
+                                    rows={isExpanded ? 3 : 2}
                                     placeholder={t.agentChat.inputPlaceholder}
                                     className="flex-1 bg-transparent outline-none border-none text-white placeholder:text-cyan-100/50 resize-none"
                                     disabled={isSending}
