@@ -27,6 +27,7 @@ export default function AgentChat() {
     const [isSending, setIsSending] = useState(false);
     const [error, setError] = useState('');
     const messagesContainerRef = useRef<HTMLDivElement | null>(null);
+    const textareaRef = useRef<HTMLTextAreaElement | null>(null);
     const [isOpen, setIsOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
 
@@ -37,6 +38,13 @@ export default function AgentChat() {
             setIsOpen(true);
         }
     }, []);
+
+    // Auto-focus input after sending completes
+    useEffect(() => {
+        if (!isSending && textareaRef.current && isOpen) {
+            textareaRef.current.focus();
+        }
+    }, [isSending, isOpen]);
     // Use n8n webhook URL directly
     const agentEndpoint = 'https://n8n-azy7zvkpmcor.ceri.sumopod.my.id/webhook/e736d813-ecda-44c2-8c7a-da5d1eb547e9';
 
@@ -234,6 +242,7 @@ export default function AgentChat() {
                         <div className="px-4 pb-4 pt-2 shrink-0 bg-[#041c3b]">
                             <div className="bg-white/5 border border-white/10 rounded-xl p-3 flex items-center gap-3">
                                 <textarea
+                                    ref={textareaRef}
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyDown={handleKeyDown}
