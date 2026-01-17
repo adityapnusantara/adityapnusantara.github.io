@@ -8,7 +8,7 @@ export const content = {
             education: 'Education',
             skills: 'Skills',
             projects: 'Projects',
-            chat: 'Agent Introduction',
+            chat: 'Adit.AI',
             contact: 'Contact',
         },
         hero: {
@@ -157,9 +157,9 @@ export const content = {
             ]
         },
         agentChat: {
-            title: 'Agent Introduction',
-            subtitle: 'Chat with Agent Introduction to learn more about Adit’s background, projects, and skills.',
-            name: 'Agent Introduction',
+            title: 'Adit.AI',
+            subtitle: 'Chat with Adit.AI to learn more about Adit’s background, projects, and skills.',
+            name: 'Adit.AI',
             inputPlaceholder: 'Type a message and press Enter to send',
             send: 'Send',
             waiting: 'Agent is thinking...',
@@ -205,7 +205,7 @@ export const content = {
             education: 'Pendidikan',
             skills: 'Keahlian',
             projects: 'Proyek',
-            chat: 'Agent Introduction',
+            chat: 'Adit.AI',
             contact: 'Kontak',
         },
         hero: {
@@ -354,9 +354,9 @@ export const content = {
             ]
         },
         agentChat: {
-            title: 'Agent Introduction',
-            subtitle: 'Ngobrol dengan Agent Introduction untuk mengenal lebih dalam tentang Adit, proyek, dan skill.',
-            name: 'Agent Introduction',
+            title: 'Adit.AI',
+            subtitle: 'Ngobrol dengan Adit.AI untuk mengenal lebih dalam tentang Adit, proyek, dan skill.',
+            name: 'Adit.AI',
             inputPlaceholder: 'Ketik pesan dan tekan Enter untuk mengirim',
             send: 'Kirim',
             waiting: 'Agen sedang berpikir...',
