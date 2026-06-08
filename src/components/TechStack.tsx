@@ -1,114 +1,110 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
-// Keep the data static as it's mostly proper nouns (Python, SQL etc)
-// But we use the translated header/description
-const stackData = [
-    {
-        category: 'Languages',
-        skills: [
-            { name: 'Python', icon: 'devicon-python-plain colored' },
-            { name: 'SQL', icon: 'fa-solid fa-database text-blue-400' },
-        ]
-    },
-    {
-        category: 'AI / ML',
-        skills: [
-            { name: 'Machine Learning', icon: 'fa-solid fa-brain text-pink-400' },
-            { name: 'Deep Learning', icon: 'fa-solid fa-network-wired text-purple-400' },
-            { name: 'NLP', icon: 'fa-solid fa-language text-indigo-400' },
-            { name: 'Transformers', icon: 'fa-solid fa-robot text-yellow-400' },
-            { name: 'PyTorch', icon: 'devicon-pytorch-original colored' },
-            { name: 'Spacy', icon: 'fa-solid fa-comment-dots text-blue-300' },
-            { name: 'Semantic Search', icon: 'fa-solid fa-magnifying-glass text-green-400' },
-        ]
-    },
-    {
-        category: 'Frameworks',
-        skills: [
-            { name: 'LangChain', icon: 'fa-solid fa-link text-green-400' },
-            { name: 'Langfuse', icon: 'fa-solid fa-shield-halved text-red-400' },
-            { name: 'RestAPI', icon: 'fa-solid fa-server text-gray-400' },
-            { name: 'Prompt Eng.', icon: 'fa-solid fa-terminal text-orange-400' },
-        ]
-    },
-    {
-        category: 'Databases',
-        skills: [
-            { name: 'Milvus', icon: 'fa-solid fa-cubes text-blue-500' },
-            { name: 'MongoDB', icon: 'devicon-mongodb-plain colored' },
-            { name: 'Elasticsearch', icon: 'devicon-elasticsearch-plain colored' },
-        ]
-    },
-    {
-        category: 'Cloud & Infra',
-        skills: [
-            { name: 'Docker & K8s', icon: 'devicon-kubernetes-plain colored' },
-            { name: 'GCP', icon: 'devicon-googlecloud-plain colored' },
-            { name: 'Ubuntu', icon: 'devicon-ubuntu-plain colored' },
-        ]
-    },
-    {
-        category: 'MLOps',
-        skills: [
-            { name: 'MLFlow', icon: 'fa-solid fa-chart-line text-blue-400' },
-            { name: 'Airflow', icon: 'devicon-apacheairflow-plain colored' },
-            { name: 'ArgoCD', icon: 'fa-solid fa-arrows-rotate text-orange-400' },
-            { name: 'Kafka', icon: 'devicon-apachekafka-plain colored' },
-            { name: 'LabelStudio', icon: 'fa-solid fa-tag text-teal-400' },
-        ]
-    }
+type StackItem = {
+  name: string;
+  icon?: string;
+};
+
+const stackData: { category: string; items: StackItem[] }[] = [
+  {
+    category: 'Languages & Frameworks',
+    items: [
+      { name: 'Python', icon: 'devicon-python-plain' },
+      { name: 'PyTorch', icon: 'devicon-pytorch-original' },
+      { name: 'FastAPI', icon: 'devicon-fastapi-plain' },
+      { name: 'spaCy' },
+      { name: 'SQL' },
+    ],
+  },
+  {
+    category: 'AI / ML',
+    items: [
+      { name: 'Machine Learning' },
+      { name: 'Deep Learning' },
+      { name: 'NLP' },
+      { name: 'Transformers' },
+      { name: 'Semantic Search' },
+      { name: 'LangChain' },
+      { name: 'Langfuse' },
+      { name: 'Prompt Engineering' },
+    ],
+  },
+  {
+    category: 'Data & Storage',
+    items: [
+      { name: 'MongoDB', icon: 'devicon-mongodb-plain' },
+      { name: 'Elasticsearch', icon: 'devicon-elasticsearch-plain' },
+      { name: 'Milvus' },
+    ],
+  },
+  {
+    category: 'Cloud & MLOps',
+    items: [
+      { name: 'Docker', icon: 'devicon-docker-plain' },
+      { name: 'Kubernetes', icon: 'devicon-kubernetes-plain' },
+      { name: 'GCP', icon: 'devicon-googlecloud-plain' },
+      { name: 'Airflow', icon: 'devicon-apacheairflow-plain' },
+      { name: 'Kafka', icon: 'devicon-apachekafka-original' },
+      { name: 'ArgoCD', icon: 'devicon-argocd-plain' },
+      { name: 'Ubuntu', icon: 'devicon-ubuntu-plain' },
+      { name: 'MLFlow' },
+      { name: 'LabelStudio' },
+    ],
+  },
 ];
 
 export default function TechStack() {
-    const { t } = useLanguage();
+  const { t } = useLanguage();
 
-    return (
-        <section id="skills" className="py-20 bg-[#031b38]/50">
-            <div className="container mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-12 text-center"
-                >
-                    <h2 className="text-3xl font-bold text-white mb-4">{t.stack.title}</h2>
-                    <p className="text-cyan-100/80 max-w-2xl mx-auto">
-                        {t.stack.description}
-                    </p>
-                </motion.div>
+  return (
+    <section className="py-24 md:py-32">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.1 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-heading font-bold tracking-tight text-black border-b-4 border-black pb-6 mb-12">
+            {t.stack.title}
+          </h2>
+          <p className="text-[#525252] font-body mb-12 -mt-6">
+            {t.stack.description}
+          </p>
+        </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {stackData.map((group, groupIndex) => (
-                        <motion.div
-                            key={group.category}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: groupIndex * 0.1 }}
-                            className="bg-[#061f3f] border border-cyan-500/15 rounded-xl p-6 hover:border-cyan-400/25 transition-all hover:bg-[#082a52]/90 group shadow-lg shadow-cyan-500/10"
-                        >
-                            <h3 className="text-lg font-semibold text-cyan-100 mb-6 group-hover:text-cyan-300 transition-colors">
-                                {group.category}
-                            </h3>
-                            <div className="flex flex-wrap gap-4">
-                                {group.skills.map((skill) => (
-                                    <div key={skill.name} className="flex flex-col items-center gap-2 group/icon">
-                                        <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-cyan-500/10 group-hover/icon:bg-cyan-500/5 group-hover/icon:border-cyan-500/20 transition-all">
-                                            <i className={`${skill.icon} text-2xl`}></i>
-                                        </div>
-                                        <span className="text-xs text-cyan-100/70 group-hover/icon:text-white transition-colors">
-                                            {skill.name}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+        <div className="space-y-10">
+          {stackData.map((group, gi) => (
+            <motion.div
+              key={gi}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.1 }}
+            >
+              <h3 className="font-mono text-xs uppercase tracking-widest text-[#525252] border-b-2 border-black pb-2 mb-6">
+                {group.category}
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {group.items.map((item, ii) => (
+                  <div
+                    key={ii}
+                    className="group inline-flex items-center gap-2 border border-black px-4 py-2 font-body text-sm text-black hover:bg-black hover:text-white transition-colors duration-100"
+                  >
+                    {item.icon && (
+                      <i className={`${item.icon} text-lg grayscale group-hover:invert`} />
+                    )}
+                    {item.name}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }

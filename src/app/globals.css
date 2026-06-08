@@ -4,52 +4,165 @@
 
 @layer base {
   :root {
-    --background: 212 76% 8%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
-    --card: 214 65% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
 
-    --popover: 214 65% 12%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 199 95% 62%;
-    --primary-foreground: 214 82% 12%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 70% 18%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 215 45% 20%;
-    --muted-foreground: 215 20% 80%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 32%;
 
-    --accent: 191 97% 68%;
-    --accent-foreground: 215 25% 15%;
+    --accent: 0 0% 0%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 0% 0%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 60% 20%;
-    --input: 217 60% 20%;
-    --ring: 199 95% 64%;
+    --border: 0 0% 0%;
+    --border-light: 0 0% 90%;
+    --input: 0 0% 0%;
+    --ring: 0 0% 0%;
+
+    --radius: 0px;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-[hsl(var(--border-light))];
+    border-radius: 0;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-black font-body antialiased;
   }
 }
 
-/* Custom Scrollbar */
+/* ——— Noise texture overlay for paper-like quality ——— */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+}
+
+/* ——— Sharp scrollbar ——— */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-background;
+  background: #fff;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-sky-500/50 rounded-full hover:bg-sky-400/80;
+  background: #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* ——— Selection ——— */
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+/* ——— Section texture utilities ——— */
+.texture-lines-h {
+  position: relative;
+}
+.texture-lines-h::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    #000 1px,
+    #000 2px
+  );
+  background-size: 100% 4px;
+  opacity: 0.015;
+}
+
+.texture-grid {
+  position: relative;
+}
+.texture-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(#00000008 1px, transparent 1px),
+    linear-gradient(90deg, #00000008 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.015;
+}
+
+.texture-diagonal {
+  position: relative;
+}
+.texture-diagonal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    #00000008 40px,
+    #00000008 42px
+  );
+  opacity: 0.01;
+}
+
+/* Inverted section textures (for black backgrounds) */
+.texture-lines-v-inverted {
+  position: relative;
+}
+.texture-lines-v-inverted::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 1px,
+    #fff 1px,
+    #fff 2px
+  );
+  background-size: 4px 100%;
+  opacity: 0.03;
+}
+
+.texture-radial-inverted {
+  position: relative;
+}
+.texture-radial-inverted::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle at top center,
+    #ffffff,
+    transparent 70%
+  );
+  opacity: 0.05;
 }

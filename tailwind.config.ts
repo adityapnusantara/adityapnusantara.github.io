@@ -15,8 +15,18 @@ const config: Config = {
             },
         },
         extend: {
+            fontFamily: {
+                heading: ['Playfair Display', 'Georgia', 'serif'],
+                body: ['Source Serif 4', 'Georgia', 'serif'],
+                mono: ['JetBrains Mono', 'monospace'],
+            },
+            fontSize: {
+                '8xl': ['8rem', { lineHeight: '1' }],
+                '9xl': ['10rem', { lineHeight: '1' }],
+            },
             colors: {
                 border: "hsl(var(--border))",
+                "border-light": "hsl(var(--border-light))",
                 input: "hsl(var(--input))",
                 ring: "hsl(var(--ring))",
                 background: "hsl(var(--background))",
@@ -51,9 +61,13 @@ const config: Config = {
                 },
             },
             borderRadius: {
-                lg: "var(--radius)",
-                md: "calc(var(--radius) - 2px)",
-                sm: "calc(var(--radius) - 4px)",
+                lg: "0px",
+                md: "0px",
+                sm: "0px",
+                xl: "0px",
+                "2xl": "0px",
+                "3xl": "0px",
+                full: "0px",
             },
         },
     },

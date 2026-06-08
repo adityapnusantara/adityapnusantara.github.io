@@ -2,132 +2,139 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Linkedin, Mail, Globe } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/lib/utils';
 import { useLanguage } from '@/context/LanguageContext';
 
+const navLinks = [
+  { key: 'home' as const, href: '/' },
+  { key: 'experience' as const, href: '/experience' },
+  { key: 'projects' as const, href: '/projects' },
+  { key: 'contact' as const, href: '/contact' },
+];
+
 export default function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const { t, language, setLanguage } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const { t, language, setLanguage } = useLanguage();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    const navLinks = [
-        { name: t.nav.about, href: '#about' },
-        { name: t.nav.experience, href: '#experience' },
-        { name: t.nav.skills, href: '#skills' },
-        { name: t.nav.projects, href: '#projects' },
-        { name: t.nav.chat, href: '#agent-chat' },
-        { name: t.nav.contact, href: '#contact' },
-    ];
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
-    const toggleLanguage = () => {
-        setLanguage(language === 'en' ? 'id' : 'en');
-    };
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
 
-    return (
-        <nav
-            className={cn(
-                'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-                scrolled
-                    ? 'bg-[#041b3a]/85 backdrop-blur-md border-b border-cyan-500/15 shadow-lg shadow-cyan-500/10 py-4'
-                    : 'bg-transparent py-6'
-            )}
-        >
-            <div className="container mx-auto px-6 flex items-center justify-between">
-                <Link href="/" className="text-xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-sky-400">
-                    Aditya Pratama Nusantara
-                </Link>
+  return (
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-100 ${
+          scrolled
+            ? 'bg-white/95 border-b-2 border-black'
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Empty spacer — logo removed by request */}
+          <div />
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-sm font-medium text-sky-100 hover:text-cyan-200 transition-colors"
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                    <div className="h-6 w-px bg-white/10 mx-2" />
-
-                    <button
-                        onClick={toggleLanguage}
-                        className="flex items-center gap-2 text-sm font-medium text-sky-100 hover:text-white transition-colors px-3 py-1.5 rounded-full hover:bg-cyan-500/10 border border-cyan-500/20"
-                    >
-                        <Globe size={16} />
-                        <span className="uppercase">{language}</span>
-                    </button>
-
-                    <div className="flex gap-4">
-                        <a href="https://linkedin.com/in/adityapn" target="_blank" rel="noreferrer" className="text-cyan-200/80 hover:text-white transition-colors">
-                            <Linkedin size={20} />
-                        </a>
-                        <a href="mailto:adityaadit677@gmail.com" className="text-cyan-200/80 hover:text-white transition-colors">
-                            <Mail size={20} />
-                        </a>
-                    </div>
-                </div>
-
-                {/* Mobile Toggle */}
-                <div className="md:hidden flex items-center gap-4">
-                    <button
-                        onClick={toggleLanguage}
-                        className="flex items-center gap-2 text-sm font-medium text-sky-100 hover:text-white transition-colors px-2 py-1 rounded-md bg-cyan-500/10"
-                    >
-                        <span className="uppercase">{language}</span>
-                    </button>
-
-                    <button
-                        className="text-white"
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    >
-                        {mobileMenuOpen ? <X /> : <Menu />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile Menu */}
-            <AnimatePresence>
-                {mobileMenuOpen && (
-                    <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="md:hidden absolute top-full left-0 right-0 bg-[#031a36]/95 backdrop-blur-xl border-b border-cyan-500/15 p-6"
-                >
-                    <div className="flex flex-col gap-6 items-center">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="text-lg font-medium text-sky-100 hover:text-cyan-200"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                        <div className="flex gap-6 mt-4">
-                            <a href="https://linkedin.com/in/adityapn" target="_blank" rel="noreferrer" className="text-cyan-200/80 hover:text-white">
-                                <Linkedin size={24} />
-                            </a>
-                            <a href="mailto:adityaadit677@gmail.com" className="text-cyan-200/80 hover:text-white">
-                                <Mail size={24} />
-                            </a>
-                        </div>
-                    </div>
-                </motion.div>
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.key}
+                href={link.href}
+                className={`relative font-mono text-xs uppercase tracking-widest transition-colors duration-100 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-black focus-visible:outline-offset-[3px] ${
+                  isActive(link.href)
+                    ? 'text-black'
+                    : 'text-black hover:text-black'
+                }`}
+              >
+                {t.nav[link.key]}
+                {isActive(link.href) && (
+                  <motion.span
+                    layoutId="nav-indicator"
+                    className="absolute -bottom-1 left-0 right-0 h-[2px] bg-black"
+                    transition={{ type: 'tween', duration: 0.1 }}
+                  />
                 )}
-            </AnimatePresence>
-        </nav>
-    );
+              </Link>
+            ))}
+          </div>
+
+          {/* Right side actions */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'id' : 'en')}
+              className="flex items-center gap-1.5 border border-black px-2.5 py-1.5 font-mono text-xs uppercase tracking-widest text-black hover:bg-black hover:text-white transition-colors duration-100 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-black focus-visible:outline-offset-[3px]"
+            >
+              <Globe size={14} strokeWidth={1.5} />
+              <span>{language}</span>
+            </button>
+
+            {/* Mobile toggle — hamburger / X */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden relative w-10 h-10 flex items-center justify-center focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-black focus-visible:outline-offset-[3px]"
+              aria-label="Toggle menu"
+            >
+              <span className="sr-only">Menu</span>
+              <span
+                className={`absolute h-[2px] w-5 bg-black transition-transform duration-100 ${
+                  isOpen ? 'rotate-45 translate-y-0' : '-translate-y-1.5'
+                }`}
+              />
+              <span
+                className={`absolute h-[2px] w-5 bg-black transition-opacity duration-100 ${
+                  isOpen ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
+              <span
+                className={`absolute h-[2px] w-5 bg-black transition-transform duration-100 ${
+                  isOpen ? '-rotate-45 translate-y-0' : 'translate-y-1.5'
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile menu — full-screen black overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.1 }}
+            className="fixed inset-0 z-40 bg-black text-white flex flex-col items-center justify-center gap-10 md:hidden"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.key}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`text-5xl font-heading font-bold transition-colors duration-100 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px] ${
+                  isActive(link.href) ? 'text-white' : 'text-white/60 hover:text-white'
+                }`}
+              >
+                {t.nav[link.key]}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
 }
