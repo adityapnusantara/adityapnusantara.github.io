@@ -1,62 +1,61 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Mail, Linkedin } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { Mail, Linkedin, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
-    const { t } = useLanguage();
+  const { t } = useLanguage();
+  const year = new Date().getFullYear();
 
-    return (
-        <footer className="bg-[#041b3a] pt-20 pb-10 border-t border-cyan-500/10 relative overflow-hidden">
-            <div className="absolute inset-x-0 -top-40 h-64 bg-gradient-to-b from-cyan-500/15 to-transparent blur-3xl pointer-events-none" />
-            <div className="container mx-auto px-6">
+  return (
+    <>
+      {/* Thick rule above footer */}
+      <div className="border-t-[8px] border-black" />
 
-                {/* Contact CTA */}
-                <div className="max-w-4xl mx-auto text-center mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{t.footer.title}</h2>
-                        <p className="text-xl text-cyan-100/80 mb-8">
-                            {t.footer.subtitle}
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                            <a
-                                href="mailto:adityaadit677@gmail.com"
-                                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-lg flex items-center gap-2"
-                            >
-                                <Mail size={20} />
-                                {t.footer.email}
-                            </a>
-                            <a
-                                href="https://linkedin.com/in/adityapn"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="px-8 py-4 bg-white/10 border border-cyan-500/20 text-cyan-100 font-medium rounded-full hover:bg-white/15 transition-all flex items-center gap-2"
-                            >
-                                <Linkedin size={20} />
-                                {t.footer.linkedin}
-                            </a>
-                        </div>
-                    </motion.div>
-                </div>
+      <footer className="bg-black text-white texture-lines-v-inverted">
+        <div className="max-w-6xl mx-auto px-6 md:px-8 lg:px-12 py-24 md:py-32">
+          {/* CTA Section */}
+          <div className="mb-16">
+            <h2 className="text-5xl md:text-7xl font-heading italic text-white leading-none tracking-tight mb-6">
+              {t.footer.title}
+            </h2>
+            <p className="text-lg font-body text-white/70 max-w-lg">
+              {t.footer.subtitle}
+            </p>
 
-                {/* Bottom Bar */}
-                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-cyan-500/10 text-cyan-100/70 text-sm">
-                    <div className="mb-4 md:mb-0">
-                        <p className="mb-1 text-cyan-100 font-medium">Aditya Pratama Nusantara</p>
-                        <p>{t.footer.role}</p>
-                    </div>
-                    <div className="flex gap-6">
-                        <a href="#home" className="hover:text-cyan-300 transition-colors">{t.nav.about}</a>
-                        <a href="#experience" className="hover:text-cyan-300 transition-colors">{t.nav.experience}</a>
-                        <a href="#skills" className="hover:text-cyan-300 transition-colors">{t.nav.skills}</a>
-                    </div>
-                </div>
+            <div className="flex flex-wrap gap-4 mt-10">
+              <a
+                href="mailto:adityaadit677@gmail.com"
+                className="group inline-flex items-center gap-3 border-2 border-white px-8 py-4 font-mono text-sm uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors duration-100 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+              >
+                <Mail size={16} strokeWidth={1.5} className="text-white group-hover:text-black" />
+                {t.footer.email}
+                <ArrowUpRight size={16} strokeWidth={1.5} className="text-white group-hover:text-black" />
+              </a>
+              <a
+                href="https://linkedin.com/in/adityapn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 border-2 border-white px-8 py-4 font-mono text-sm uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors duration-100 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+              >
+                <Linkedin size={16} strokeWidth={1.5} className="text-white group-hover:text-black" />
+                {t.footer.linkedin}
+                <ArrowUpRight size={16} strokeWidth={1.5} className="text-white group-hover:text-black" />
+              </a>
             </div>
-        </footer>
-    );
+          </div>
+
+          {/* Bottom bar */}
+          <div className="border-t border-white/20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="font-mono text-xs text-white/50 uppercase tracking-widest">
+              Aditya Pratama Nusantara · {t.footer.role}
+            </p>
+            <p className="font-mono text-xs text-white/50">
+              © {year}
+            </p>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
 }

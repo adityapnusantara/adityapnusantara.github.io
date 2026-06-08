@@ -3,18 +3,15 @@ export type Language = 'en' | 'id';
 export const content = {
     en: {
         nav: {
-            about: 'About',
+            home: 'Home',
             experience: 'Experience',
-            education: 'Education',
-            skills: 'Skills',
             projects: 'Projects',
-            chat: 'Adit.AI',
             contact: 'Contact',
         },
         hero: {
             badge: 'Available for new opportunities',
-            title: 'AI & ML',
-            subtitle: 'Engineering Specialist',
+            title: 'Aditya Pratama Nusantara',
+            subtitle: 'AI & ML Engineering Specialist',
             description: 'I build responsible AI systems for fintech and fraud detection. Focusing on production-grade MLOps, scalability, and cost-efficient infrastructure.',
             ctaPrimary: "Let's Talk",
             ctaSecondary: 'View Work',
@@ -156,18 +153,6 @@ export const content = {
                 }
             ]
         },
-        agentChat: {
-            title: 'Adit.AI',
-            subtitle: 'Chat with Adit.AI to learn more about Adit’s background, projects, and skills.',
-            name: 'Adit.AI',
-            inputPlaceholder: 'Type a message and press Enter to send',
-            send: 'Send',
-            waiting: 'Agent is thinking...',
-            welcome: "Hi, I'm the agent. Ask about my work, projects, or stack!",
-            missingEndpoint: 'Hi, fitur ini masih sedang dikerjakan. Kembali lagi sebentar lagi, ya.',
-            error: 'Unable to reach the agent. Please try again.',
-            emptyResponse: 'The agent did not return any text.',
-        },
         stack: {
             title: 'Key Skills',
             description: 'Core competencies and technical stack.',
@@ -200,18 +185,15 @@ export const content = {
     },
     id: {
         nav: {
-            about: 'Tentang',
+            home: 'Beranda',
             experience: 'Pengalaman',
-            education: 'Pendidikan',
-            skills: 'Keahlian',
             projects: 'Proyek',
-            chat: 'Adit.AI',
             contact: 'Kontak',
         },
         hero: {
             badge: 'Tersedia untuk peluang baru',
-            title: 'Spesialis AI & ML',
-            subtitle: 'Engineering',
+            title: 'Aditya Pratama Nusantara',
+            subtitle: 'Spesialis AI & ML Engineering',
             description: 'Membangun sistem AI yang bertanggung jawab untuk fintech dan deteksi fraud. Fokus pada MLOps level produksi, skalabilitas, dan infrastruktur hemat biaya.',
             ctaPrimary: 'Hubungi Saya',
             ctaSecondary: 'Lihat Karya',
@@ -352,18 +334,6 @@ export const content = {
                     ]
                 }
             ]
-        },
-        agentChat: {
-            title: 'Adit.AI',
-            subtitle: 'Ngobrol dengan Adit.AI untuk mengenal lebih dalam tentang Adit, proyek, dan skill.',
-            name: 'Adit.AI',
-            inputPlaceholder: 'Ketik pesan dan tekan Enter untuk mengirim',
-            send: 'Kirim',
-            waiting: 'Agen sedang berpikir...',
-            welcome: 'Hai, saya agen yang siap bantu. Tanyakan apa saja tentang kerjaan atau proyek!',
-            missingEndpoint: 'Halo, fitur ini sedang dikerjakan. Silakan kembali lagi nanti.',
-            error: 'Agen tidak dapat dihubungi. Coba lagi ya.',
-            emptyResponse: 'Agen tidak mengembalikan teks apa pun.',
         },
         stack: {
             title: 'Keahlian Utama',
